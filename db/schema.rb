@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122035755) do
+ActiveRecord::Schema.define(version: 20180122040733) do
 
   create_table "books", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,30 @@ ActiveRecord::Schema.define(version: 20180122035755) do
     t.string "available"
     t.integer "library_id"
     t.integer "section_id"
+  end
+
+  create_table "booksharemembers", force: :cascade do |t|
+    t.integer "consumer_id"
+    t.integer "library_id"
+  end
+
+  create_table "consumers", force: :cascade do |t|
+    t.string "name"
+    t.string "username"
+    t.string "password_digest"
+    t.integer "age"
+    t.string "address"
+    t.string "email"
+    t.integer "library_id"
+  end
+
+  create_table "librarians", force: :cascade do |t|
+    t.string "name"
+    t.string "username"
+    t.string "password_digest"
+    t.integer "age"
+    t.integer "start_year"
+    t.integer "library_id"
   end
 
   create_table "librarys", force: :cascade do |t|
