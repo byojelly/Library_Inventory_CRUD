@@ -5,7 +5,8 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
-#if seperate Controllers for classes are made that have to to be activated with use here: examples below
-      #use TweetController
-      #use UserController
-run ApplicationController
+
+
+use ConsumerController
+use ApplicationController
+run HelperController
