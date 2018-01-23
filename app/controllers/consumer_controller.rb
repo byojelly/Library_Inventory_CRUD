@@ -1,10 +1,14 @@
 require './config/environment'
 require 'rack-flash'
-class ApplicationController < HelperController
+class ConsumerController < HelperController
 
     use Rack::Flash
 
-  
+    post '/consumers/onboarding' do
+binding.pry
+
+    end
+
 end
 
 
