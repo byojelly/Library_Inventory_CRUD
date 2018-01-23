@@ -1,3 +1,22 @@
 1) when creating branches for different sections of your project, should you delete the branch after you are done with coding the branches desired features and merging it to master?
 
 2)users , i have librarian and consumer, should i have a user table that joins these 2?
+
+3) when editing users, my current code outputs an unorganized hash like so to the patch request
+          {"_method"=>"PATCH",
+           "name"=>"Alex Mermelada",
+           "username"=>"OldUser",
+           "age"=>"22",
+           "address"=>"Sparta",
+           "email"=>"email@",
+           "library_id"=>"1",
+           "id"=>"14"}
+  I would like this to be: where all the updates are nested into a hash that can neatly be inserted into the patch request
+  {"_method"=>"PATCH", consumer [   "name"=>"Alex Mermelada",
+                                     "username"=>"OldUser",
+                                     "age"=>"22",
+                                     "address"=>"Sparta",
+                                     "email"=>"email@",
+                                     "library_id"=>"1",
+                                     "id"=>"14"]}
+4) rackflash stopped working for alerts

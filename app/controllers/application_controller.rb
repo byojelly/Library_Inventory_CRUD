@@ -49,8 +49,10 @@ class ApplicationController < HelperController
                                 redirect to '/signup'
                         else
                           #if username doesnt exist create Librarian
-                            @librarianLibrarian.create(username: params[:username], email: params[:email], password: params[:password])
-                          #  erb :'/librarians/onboarding'
+                            @librarian = Librarian.create(username: params[:username], email: params[:email], password: params[:password])
+                            session[:librarian_id] = @librarian.id
+
+                            erb :'/librarians/onboarding'
                         end
 
                   end
