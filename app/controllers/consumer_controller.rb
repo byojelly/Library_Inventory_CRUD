@@ -6,12 +6,12 @@ class ConsumerController < HelperController
 
             post '/consumers/onboarding' do
               @consumer = Consumer.find_by(id: session[:consumer_id])
-        #binding.pry
+  #binding.pry
                         if params.has_key?("library_id")
                               if params[:name]=="" || params[:age]=="" || params[:address]==""
                                       flash[:message] = "Please do not leave name/age/address empty during onboarding."
                                       erb :'/consumers/onboarding'
-                              elsif !params[:age].to_i.is_a? Integer
+                              elsif !is_number?(params[:age])  #helper method
                                       flash[:message] = "Please make sure that your age input is numerical."
                                       erb :'/consumers/onboarding'
                               else

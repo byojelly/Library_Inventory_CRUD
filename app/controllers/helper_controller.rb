@@ -25,6 +25,9 @@ class HelperController < Sinatra::Base
       def current_user
         Librarian.find_by(id: session[:librarian_id]) || Consumer.find_by(id: session[:consumer_id])
       end
+      def is_number?(string)
+        true if Float(string) rescue false
+      end
     end
 
 

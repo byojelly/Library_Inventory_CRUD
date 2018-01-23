@@ -38,7 +38,7 @@ class ApplicationController < HelperController
                         else
                             @consumer = Consumer.create(username: params[:username], email: params[:email], password: params[:password])
                             session[:consumer_id] = @consumer.id
-        #binding.pry
+#binding.pry
                             erb :'/consumers/onboarding'
                         end
                     #if librarian was checked
@@ -51,7 +51,7 @@ class ApplicationController < HelperController
                           #if username doesnt exist create Librarian
                             @librarian = Librarian.create(username: params[:username], email: params[:email], password: params[:password])
                             session[:librarian_id] = @librarian.id
-
+#binding.pry
                             erb :'/librarians/onboarding'
                         end
 

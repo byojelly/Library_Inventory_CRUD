@@ -5,18 +5,16 @@ class LibrarianController < HelperController
     use Rack::Flash
             post '/librarians/onboarding' do
                   @librarian = Librarian.find_by(id: session[:librarian_id])
-                  
+#binding.pry
                     if params.has_key?("library_id")
                           if params[:name]=="" || params[:age]=="" || params[:start_year]==""
                                   flash[:message] = "Please do not leave name/age/first year empty during onboarding."
                                   erb :'/librarians/onboarding'
-                          elsif !params[:age].to_i.is_a? Integer
-
+                          elsif !is_number?(params[:age])
                                   flash[:message] = "Please make sure that your age is numerical."
                                   erb :'/librarians/onboarding'
 
-                          elsif !params[:start_year].to_i.is_a? Integer
-
+                          elsif !is_number?(params[:start_year])
                                           flash[:message] = "Please make sure that your first year worked input is numerical."
                                           erb :'/librarians/onboarding'
                           else
