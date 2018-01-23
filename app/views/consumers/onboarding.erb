@@ -1,5 +1,8 @@
 <center>
-    <h1>Welcome <%=@consumer.username%></h1>
+
+
+
+    <h1>Congratulations <%=@consumer.username%> for becoming a Consumer of the NJ library system.</h1>
     <p>We just have a few more questions to get you fully onboarded.<p>
 
       <form action="/consumers/onboarding" method="POST">
@@ -7,21 +10,35 @@
                <label>What is your full name?</label>
                   <input type="text" name="name" id="name" placeholder="">
 
+              <br></br>
+
               <label>What is your age?</label>
                   <input type="text" name="age" id="age" placeholder="">
 
-              <b><label>What is your full address?</label></b>
+              <br></br>
+
+              <label>What is your full address?</label>
               <input type="text" name="address" id="address" placeholder="">
 
+              <br></br>
+
+                <p>What Libraries do you belong to?</p>
                 <% Library.all.each do |library| %>
                 <label><%= library.name %></label>
-                <input type="checkbox" name="consumer[library_ids][]" value="<%= library.id %>" id="<%= library.name %>" <%='checked' if @song.genres.include?(genre) %>>
+                <input type="checkbox" name="library_id" value="<%= library.id %>" id="<%= library.name %>" <%='checked' if @consumer.libraries.include?(library) %>>
                 <% end %>
-
+                <br></br>
+                <input type="submit" name="submit" value="submit">
 
       </form>
 
       <a href="/login">Already a user. Click here to login</a>
 
+      <br></br>
 
+      <b>
+          <% if flash.has?(:message) %>
+            <%= flash[:message] %>
+          <% end %>
+      </b>
 </center>

@@ -14,10 +14,16 @@ class HelperController < Sinatra::Base
 
     helpers do
       def logged_in?
-          !!session[:user_id]
+          !!session[:consumer_id] || !!session[:librarian_id]
+      end
+      def consumer_logged_in?
+          !!session[:consumer_id]
+      end
+      def librarian_logged_in?
+          !!session[:librarian_id]
       end
       def current_user
-        Librarian.find_by(id: session[:library_id])
+        Librarian.find_by(id: session[:librarian_id]) || Consumer.find_by(id: session[:consumer_id])
       end
     end
 

@@ -1,0 +1,16 @@
+<center>
+        <h1><%=@consumer.username%> show page.</h1>
+        <p>Below you will find the details for this account.</p>
+
+        <p><b>Name </b>= <%=@consumer.name%><p>
+        <p><b>Username </b>= <%=@consumer.username%><p>
+        <p><b>age </b>= <%=@consumer.age%><p>
+        <p><b>address </b>= <%=@consumer.address%><p>
+        <p><b>email </b>= <%=@consumer.email%><p>
+        <p><b>your local library </b>= <a href="/libraries/<%=@library.id%>"><%=@library.name%></a><p>
+
+        <br><br>
+
+        <a href="/logout">Log Out</a>
+
+</center>
