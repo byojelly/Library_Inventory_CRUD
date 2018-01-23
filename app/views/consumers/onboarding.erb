@@ -1,0 +1,29 @@
+<center>
+    <h1>Welcome <%=@consumer.username%></h1>
+    <p>We just have a few more questions to get you fully onboarded.<p>
+
+      <form action="/onboarding" method="POST">
+
+               <label>What is your full name?</label>
+                  <input type="text" name="name" id="name" placeholder="">
+
+              <label>What is your age?</label>
+                  <input type="text" name="age" id="age" placeholder="">
+
+              <b><label>What is your full address?</label></b>
+              <input type="text" name="address" id="address" placeholder="">
+
+                <% Library.all.each do |library| %>
+                <label><%= library.name %></label>
+                <input type="checkbox" name="consumer[library_ids][]" value="<%= library.id %>" id="<%= library.name %>" <%='checked' if @song.genres.include?(genre) %>>
+                <% end %>
+
+
+      </form>
+
+      <a href="/login">Already a user. Click here to login</a>
+
+
+</center>
+
+  

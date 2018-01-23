@@ -1,0 +1,12 @@
+<a href="/login">Sign Into Portal</a>
+<br></br>
+<a href="/signup">Not a User, Signup Here</a>
+<br></br>
+<center>
+    <h1>Welcome to the NJ Library Inventory System.</h1>
+    <h2>Below you will find a list of all of the Libraries in our newtork.</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Coat_of_Arms_of_New_Jersey.svg/300px-Coat_of_Arms_of_New_Jersey.svg.png" alt="NJ Seal">
+    <%@libraries.each do |l|%>
+          <li><a href="/library/<%=l.id%>"><%=l.name%></a></li>
+    <%end%>
+</center>
