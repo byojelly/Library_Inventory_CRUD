@@ -1,16 +1,8 @@
 require './config/environment'
 require 'rack-flash'
-class ApplicationController < Sinatra::Base
+class ApplicationController < HelperController
 
     use Rack::Flash
-
-  configure do
-    set :public_folder, 'public'
-    set :views, 'app/views'
-        enable :sessions                    #sets sessions
-        set :session_secret, "password_security"
-
-  end
 
     get '/' do
 #binding.pry
@@ -66,15 +58,6 @@ binding.pry
 
      end
 
-
-    helpers do
-      def logged_in?
-          !!session[:user_id]
-      end
-      def current_user
-        Librarian.find_by(id: session[:library_id])
-      end
-    end
 
 
 end
