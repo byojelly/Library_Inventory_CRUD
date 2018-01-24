@@ -40,50 +40,70 @@ class LibrarianController < HelperController
         #if a consumer is logged in it should redirect to /consumers/:id
             end
             get '/librarians/:id' do
+#binding.pry
+                      if session.has_key?("librarian_id")
+                            @librarian = Librarian.find_by(id: params[:id]) #browser input
+                            if session[:librarian_id] == @librarian.id      #does logged n user match the profile they want  to look at?
+                                    @library = Library.find_by(id: @librarian.library_id)
+                                    erb :'/librarians/show'
+                            else
+                                redirect "/librarians/#{session[:librarian_id]}"
+                            end
+                      else
+                            redirect "/login"
+                            flash[:message] = "Librarians may only view their own personal profile."
+                      end
+
+            end
+            get '/librarians/:id/edit' do
+            #  binding.pry
+                                if librarian_logged_in?
+                                    @librarian = Librarian.find_by(id: params[:id])
+                                    if session[:librarian_id] == @librarian.id
+                                        @library = Library.find_by(id: @librarian.library_id)
+              #binding.pry
+                                        erb :'/librarians/edit'
+
+                                    else
+                                      #if the signed in user does not match the edit page they are trying to get to, they will be redirected to their own show page
+                                        redirect "/librarians/#{session[:librarian_id]}"
+                                    end
+                                else
+                                    redirect "/librarians/#{params[:id]}"
+                                end
+            end
+            patch '/librarians/:id' do
 binding.pry
+                      @librarian = Librarian.find_by(id: params[:id])
+                      if params[:name]=="" || params[:age]=="" || params[:start_year]=="" || params[:username]==""  || params[:address]==""  || params[:email]==""
+                              flash[:message] = "Please do not leave the input sections empty when submiting an edit."
+                              redirect "/librarians/#{session[:librarian_id]}/edit"
+                      elsif !is_number?(params[:age]) || !is_number?(params[:start_year])
+                              flash[:message] = "Please make sure that your age and first year of employment is numerical."
+                              redirect "/librarians/#{session[:librarian_id]}/edit"
+
+
+                      elsif !params.has_key?("library_id")
+                            flash[:message] = "Please make sure that you select a library."
+                            redirect "/librarians/#{session[:librarian_id]}/edit"
+                      end
+
+                                @librarian.update(name: params[:name],
+                                                  username: params[:username],
+                                                  age: params[:age],
+                                                  start_year: params[:start_year],
+                                                  email: params[:email],
+                                                  library_id: params[:library_id])
+                                            #above method can be written  with a neater hash nested under a consumer key in the patch form
+                                @librarian.save
+
+                                flash[:message] = "Successfully updated consumer profile."
+                                redirect("/librarians/#{@librarian.id}")
             end
 end
 
-#            get '/consumers/:id' do
-##binding.pry
-#
-#        #librarians can view all consumer account info
-#        #consumers cannot see an account unless they are logged in
-#        #consumers cannot see account info unless it is their own via session
-#                      if session.has_key?("librarian_id")
-#                                    @consumer = Consumer.find_by(id: params[:id])
-#                                    @library = Library.find_by(id: @consumer.library_id)
-#                                    erb :'/consumers/show'
-#                      elsif session.has_key?("consumer_id")
-#                            @consumer = Consumer.find_by(id: params[:id]) #browser input
-#                            if session[:consumer_id] == @consumer.id      #does logged in user match the profile they want  to look at?
-#                                    @library = Library.find_by(id: @consumer.library_id)
-#                                    erb :'/consumers/show'
-#                            else
-#                                redirect "/consumers/#{session[:consumer_id]}"
-#                            end
-#                      else
-#                            redirect "/login"
-#                      end
-#            end
-#            #only the consumer can edit their own information
-#            get '/consumers/:id/edit' do
-##binding.pry
-#                  if consumer_logged_in?
-#                      @consumer = Consumer.find_by(id: params[:id])
-#                      if session[:consumer_id] == @consumer.id
-#                          @library = Library.find_by(id: @consumer.library_id)
-##binding.pry
-#                          erb :'/consumers/edit'
-#
-#                      else
-#                        #if the signed in user does not match the edit page they are trying to get to, they will be redirected to their own show page
-#                          redirect "/consumers/#{session[:consumer_id]}"
-#                      end
-#                  else
-#                      redirect "/consumers/#{params[:id]}"
-#                  end
-#            end
+
+
 #            patch '/consumers/:id' do
 #    #          binding.pry
 #                  @consumer = Consumer.find_by(id: params[:id])

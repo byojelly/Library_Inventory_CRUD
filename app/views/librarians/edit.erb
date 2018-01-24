@@ -1,0 +1,32 @@
+<center>
+    <h1>Edit Librarian Page for <%=@librarian.username%></h1>
+
+      <form action="/librarians/<%= @librarian.id %>" method="POST">
+        <input type="hidden" name="_method" value="PATCH">
+
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="<%= @librarian.name %>">
+      <br></br>
+        <label for="username">username</label>
+        <input type="text" name="username" id="username" value="<%= @librarian.username %>">
+      <br></br>
+        <label for="age">age</label>
+        <input type="text" name="age" id="age" value="<%= @librarian.age %>">
+      <br></br>
+        <label for="address">Employed Since</label>
+        <input type="text" name="start_year" id="start_year" value="<%= @librarian.start_year %>">
+      <br></br>
+        <label for="email">email</label>
+        <input type="text" name="email" id="email" value="<%= @librarian.email %>">
+      <br></br>
+        <p>Your Local Library</p>
+        <% Library.all.each do |lib| %>
+              <label><%= lib.name %></label>
+                  <input type="checkbox" name="library_id" value="<%= lib.id %>" id="<%= lib.name %>" <%='checked' if @librarian.library == lib %>>
+        <% end %>
+
+        <input type="submit" value="Save">
+      </form>
+
+
+</center>
