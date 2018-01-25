@@ -63,7 +63,16 @@ class ApplicationController < HelperController
 
      end
      get '/login' do
-         erb :login
+        if logged_in?
+              if consumer_logged_in?
+                redirect "/consumers/#{session[:consumer_id]}"
+              else
+                binding.pry
+                  redirect "/librarians/#{session[:librarian_id]}"
+              end
+        else
+           erb :login
+        end
      end
      post '/login' do
 #binding.pry
