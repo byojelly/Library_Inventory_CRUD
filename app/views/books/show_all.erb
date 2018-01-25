@@ -1,0 +1,11 @@
+<center>
+
+      <h1>All Books At the Library: <%=@library.name%>:<h1>
+
+
+        <%@books.each do |c|%>
+          <a href="/books/<%=b.id%>"><%=b.name%></a>
+        <%end%>
+        <br></br>
+        <a href="/logout">Log Out</a>
+<center>
