@@ -35,8 +35,10 @@ class ConsumerController < HelperController
                           @consumers = Consumer.all
                           @librarian = Librarian.find_by(id: session[:librarian_id])
                           erb :"/consumers/show_all"
-                      else session.has_key?("consumer_id")
+                      elsif consumer_logged_in?
                           redirect "/consumers/#{@consumer.id}"
+                      else
+                          redirect "/login"
                       end
         #this is a view for librarians to view all consumers per library.
         #should recognize a librarian is logged in
