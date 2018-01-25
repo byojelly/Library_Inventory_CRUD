@@ -1,11 +1,12 @@
 <center>
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
 
 
-      <h1>User Signup page</h1>
-      <form action="/signup" method="POST">
+
+      <h1>Login page</h1>
+      <form action="/login" method="POST">
               <b><p>User Type:</p></b>
               <ul><label>Consumer</label>
                   <input type="checkbox" name="consumer" id="consumer">
@@ -14,18 +15,19 @@
               </ul>
 
 
-              <b><label>New Username:</label></b>
+              <b><label>Username:</label></b>
               <input type="text" name="username" id="username" placeholder="">
             <br></br>
-              <b><label>What is your email?</label></b>
-              <input type="text" name="email" id="email" placeholder="">
-            <br></br>
-              <b><label>What is your password?</label></b>
+
+              <b><label>Password?</label></b>
               <input type="text" name="password" id="password" placeholder="">
           <br></br>
-              <input type="submit" name="submit" value="Create New User">
+              <input type="submit" name="submit" value="submit">
 
       </form>
 
-      <a href="/login">Already a user. Click here to login</a>
+      <a href="/signup">Don't have an account? Click here to signup</a>
+      <br></br>
+
+
 </center>

@@ -9,9 +9,6 @@ class ApplicationController < HelperController
         @libraries = Library.all
          erb :homepage
     end
-    get '/login' do
-        erb :login
-    end
     get '/signup' do
 #binding.pry
         erb :signup
@@ -59,14 +56,46 @@ class ApplicationController < HelperController
 
 
      end
+     get '/login' do
+         erb :login
+     end
+     post '/login' do
+#binding.pry
+              if   params[:username]=="" ||  params[:password]==""
+                      flash[:message] = "Please do not leave username/password blank when logging in."
+                      redirect to '/login'
+              else
+                      if    params.has_key?("consumer") && params.has_key?("librarian")
+                                  flash[:message] = "Please select either consumer or librarian id type when logging in."
+                                  redirect to '/login'
+
+                      elsif params.has_key?("consumer")
+                              @consumer = Consumer.find_by(username: params[:username])
+                              if @consumer && @consumer.authenticate(params[:password])
+                                session[:consumer_id] = @consumer.id
+                                redirect "/consumers/#{@consumer.id}"
+                              else
+                                flash[:message] = "Your username/password does not match our records. Please double check and try logging in again."
+                                redirect to '/login'
+                              end
+                      elsif params.has_key?("librarian")
+                              @librarian = Librarian.find_by(username: params[:username])
+                              if @librarian && @librarian.authenticate(params[:password])
+                                session[:librarian_id] = @librarian.id
+                                redirect "/librarians/#{@librarian.id}"
+                              else
+                                flash[:message] = "Your username/password does not match our records. Please double check and try logging in again."
+                                redirect to '/login'
+                              end
+                      else
+                                flash[:message] = "Please make sure you select the type of account you have before logging in."
+                                redirect to '/login'
+                      end
+              end
+     end
      get '/logout' do
        session.clear
        redirect to "/login"
      end
 
-
-
 end
-
-
-#

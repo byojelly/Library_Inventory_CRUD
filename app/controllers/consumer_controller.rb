@@ -29,7 +29,15 @@ class ConsumerController < HelperController
                           erb :'/consumers/onboarding'
                         end
             end
-            get '/consumers/all' do
+            get '/consumers' do
+#binding.pry
+                      if librarian_logged_in?
+                          @consumers = Consumer.all
+                          @librarian = Librarian.find_by(id: session[:librarian_id])
+                          erb :"/consumers/show_all"
+                      else session.has_key?("consumer_id")
+                          redirect "/consumers/#{@consumer.id}"
+                      end
         #this is a view for librarians to view all consumers per library.
         #should recognize a librarian is logged in
         #if a consumer is logged in it should redirect to /consumers/:id
@@ -40,11 +48,11 @@ class ConsumerController < HelperController
         #librarians can view all consumer account info
         #consumers cannot see an account unless they are logged in
         #consumers cannot see account info unless it is their own via session
-                      if session.has_key?("librarian_id")
+                      if librarian_logged_in? #helper
                                     @consumer = Consumer.find_by(id: params[:id])
                                     @library = Library.find_by(id: @consumer.library_id)
                                     erb :'/consumers/show'
-                      elsif session.has_key?("consumer_id")
+                      elsif consumer_logged_in? #helper
                             @consumer = Consumer.find_by(id: params[:id]) #browser input
                             if session[:consumer_id] == @consumer.id      #does logged in user match the profile they want  to look at?
                                     @library = Library.find_by(id: @consumer.library_id)

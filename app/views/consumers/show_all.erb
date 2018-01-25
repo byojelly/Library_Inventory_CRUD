@@ -1,0 +1,9 @@
+<center>
+      <h1>All Consumer Accounts by username:<h1>
+
+
+        <%@consumers.each do |c|%>
+          <a href="/consumers/<%=c.id%>"><%=c.username%></a>
+        <%end%>
+
+<center>
