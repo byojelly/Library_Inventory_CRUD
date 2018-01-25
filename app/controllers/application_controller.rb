@@ -6,8 +6,13 @@ class ApplicationController < HelperController
 
     get '/' do
 #binding.pry
-        @libraries = Library.all
-         erb :homepage
+        if Library.all.empty?
+            erb :startup
+        else
+          @libraries = Library.all
+           erb :homepage
+        end
+
     end
     get '/signup' do
 #binding.pry

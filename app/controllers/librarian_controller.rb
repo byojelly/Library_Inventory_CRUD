@@ -18,6 +18,7 @@ class LibrarianController < HelperController
             post '/librarians/onboarding' do
                   @librarian = Librarian.find_by(id: session[:librarian_id])
 #binding.pry
+
                     if params.has_key?("library_id")
                           if params[:name]=="" || params[:age]=="" || params[:start_year]==""
                                   flash[:message] = "Please do not leave name/age/first year empty during onboarding."
@@ -33,17 +34,18 @@ class LibrarianController < HelperController
                             @librarian.name = params[:name]
 
                             @librarian.age = params[:age].to_i
-                            @librarian.start_year = params[:start_year].to_i
-                            @librarian.library_id = params[:library_id].to_i
+                            @librarian.start_year = params[:start_year]
+                            @librarian.library_id = params[:library_id]
                             @library = Library.find_by(id: @librarian.library_id)
 
                             @library.librarians << @librarian
                             @librarian.save
                             redirect "/librarians/#{@librarian.id}"
                           end
+                  
                     else
-                    flash[:message] = "Please try again. You must select a local library during the onboarding."
-                      erb :'/librarians/onboarding'
+                            flash[:message] = "Please try again. You must select a local library during the onboarding."
+                              erb :'/librarians/onboarding'
                     end
             end
 

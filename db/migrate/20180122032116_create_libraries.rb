@@ -1,6 +1,6 @@
-class CreateLibrarys < ActiveRecord::Migration[5.1]
+class CreateLibraries < ActiveRecord::Migration[5.1]
   def change
-    create_table :librarys do |l|
+    create_table :libraries do |l|
           l.string :name
           l.string :contact_phone
           l.string :contact_email

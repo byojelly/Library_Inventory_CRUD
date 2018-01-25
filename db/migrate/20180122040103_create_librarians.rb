@@ -7,6 +7,8 @@ class CreateLibrarians < ActiveRecord::Migration[5.1]
           l.integer :age
           l.integer :start_year
           l.integer :library_id
+          l.string :email
+
     end
   end
 end

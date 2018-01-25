@@ -17,7 +17,7 @@ class LibraryController < HelperController
     end
 #not putting a lot of validations to save time
     post  '/libraries/new' do
-binding.pry
+#binding.pry
           if params[:name]=="" || params[:contact_phone]=="" || params[:contact_email]=="" || params[:address_street]=="" || params[:address_city]=="" || params[:address_state]=="" || params[:address_zipcode]=="" || params[:hours_of_operation]==""
                   flash[:message] = "Please do not leave input fields empty."
                   redirect '/libraries/new'
