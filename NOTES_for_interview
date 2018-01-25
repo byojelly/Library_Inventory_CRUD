@@ -22,3 +22,5 @@
 4) rackflash stopped working for alerts
 
 5) libraries/:id  not showing book count for that library
+
+6) /books/:id/edit in the books controller at the patch request,   in the browser i am unable to validate that you can not select 2 libraries then save.   It only saves 1, i would like to have an flash message saying you can only select 1

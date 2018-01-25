@@ -21,13 +21,19 @@
             <input type="text" name="available" id="available" value="<%= @book.available %>">
           <br></br>
 
-            <p>What Library is the book at?</p>
+            <p><b>What Library is the book at?</b></p>
             <% Library.all.each do |lib| %>
                   <label><%= lib.name %></label>
                       <input type="checkbox" name="library_id" value="<%= lib.id %>" id="<%= lib.name %>" <%='checked' if @book.library_id == lib.id %>>
-                        <br></br>
-            <% end %>
 
+            <% end %>
+            <p><b>What Section is the book in?</b></p>
+            <% Section.all.each do |sec| %>
+                  <label><%= sec.name %></label>
+                      <input type="checkbox" name="section_id" value="<%= sec.id %>" id="<%= sec.name %>" <%='checked' if @book.section_id == sec.id %>>
+
+            <% end %>
+            <br></br>
             <input type="submit" value="Save">
           </form>
     <br></br>
