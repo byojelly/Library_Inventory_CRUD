@@ -23,12 +23,10 @@
                   <input type="checkbox" name="n" id="n">
               </ul>
       <br></br>
-    <b>  <p>What Library does this book reside?(Select <%=@library.name%> only)</p></b>
+      <b><label>What Library does the book reside (input the exact preset value)?</label></b>
+      <input type="text" name="library_id" id="library_id" placeholder="<%=@library.id%>">
+    <br></br>
 
-                <% Library.all.each do |library| %>
-                <label><%= library.name %></label>
-                <input type="checkbox" name="library_id" value="<%= library.id %>" id="<%= library.name %>" >
-                <% end %>
 
       <b><p>What Section is this book in?</p></b>
       <% Section.all.each do |section| %>
