@@ -6,6 +6,8 @@
         <%@books.each do |b|%>
           <a href="/books/<%=b.id%>"><%=b.name%></a>
         <%end%>
-        <br></br>
+    <br></br>
+        <a href="/libraries/<%=@library.id%>/books/new">Create new books for this library.</a>
+    <br></br>
         <a href="/logout">Log Out</a>
 <center>

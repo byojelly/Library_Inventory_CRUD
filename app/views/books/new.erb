@@ -1,0 +1,47 @@
+<center>
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+
+      <h1>Create a new book at the branch</h1>
+      <form action="/books/new" method="POST">
+            <b><label>Book Name:</label></b>
+              <input type="text" name="name" id="name" placeholder="">
+      <br></br>
+              <b><label>Author?</label></b>
+              <input type="text" name="author" id="author" placeholder="">
+      <br></br>
+              <b><label>Pages?</label></b>
+              <input type="text" name="pages" id="pages" placeholder="">
+        <br></br>
+
+            <b><label>Availabile at Library?</label></b>
+              <ul><label>Yes</label>
+                  <input type="checkbox" name="y" id="y">
+              <label>No</label>
+                  <input type="checkbox" name="n" id="n">
+              </ul>
+      <br></br>
+    <b>  <p>What Library does this book reside?(Select <%=@library.name%> only)</p></b>
+
+                <% Library.all.each do |library| %>
+                <label><%= library.name %></label>
+                <input type="checkbox" name="library_id" value="<%= library.id %>" id="<%= library.name %>" >
+                <% end %>
+
+      <b><p>What Section is this book in?</p></b>
+      <% Section.all.each do |section| %>
+      <label><%= section.name %></label>
+      <input type="checkbox" name="section_id" value="<%= section.id %>" id="<%= section.name %>" >
+      <% end %>
+<br></br>
+
+
+
+              <input type="submit" name="submit" value="Create New Book">
+
+      </form>
+
+      <a href="/logout">Logout</a>
+</center>

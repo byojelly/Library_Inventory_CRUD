@@ -43,10 +43,10 @@ class LibraryController < HelperController
                                    c.library_id == params[:id].to_i
                                 end
           @consumer_count = @consumer_array.count(true)
-          @book_array =   @books.collect do |c|
+          @books_array =   @books.collect do |c|
                                    c.library_id == params[:id].to_i
                                 end
-          @book_count = @book_array.count(true)
+          @books_count = @books_array.count(true)
 #binding.pry
           erb :'/libraries/show'
 
@@ -56,6 +56,11 @@ class LibraryController < HelperController
               if librarian_logged_in?
                   @library = Library.find_by(id: params[:id])
                   @librarian = Librarian.find_by(id: params[:id])
+                  @books = Book.all
+                  @books_array =   @books.collect do |c|
+                                           c.library_id == params[:id].to_i
+                                        end
+                  @books_count = @books_array.count(true)
 #binding.pry
                   erb :'/libraries/edit'
               else
@@ -88,8 +93,17 @@ class LibraryController < HelperController
             erb :'/books/show_all'
     end
     get '/libraries/:id/books/new'  do
-binding.pry
-
-
+#binding.pry
+          if  logged_in?
+              if librarian_logged_in?
+                    @library = Library.find_by(id: params[:id])
+                    erb :'/books/new'
+              else
+                    redirect '/'
+              end
+          else
+            redirect '/login'
+          end
     end
+
 end
