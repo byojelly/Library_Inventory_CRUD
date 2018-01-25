@@ -1,0 +1,180 @@
+=> [[32m#<Librarian:0x0000000553f3e0[0m
+  id: [1;34m1[0m,
+  name: [1;36mnil[0m,
+  username: [31m[1;31m"[0m[31mlibrarian1[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$jEFOUfbEHygg0h9N673Fz.CiD5B5NQbZ/a6A.utvP5Vo/Mvftn59m[1;31m"[0m[31m[0m,
+  age: [1;36mnil[0m,
+  start_year: [1;36mnil[0m,
+  library_id: [1;36mnil[0m,
+  email: [31m[1;31m"[0m[31memail1[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553f2a0[0m
+  id: [1;34m2[0m,
+  name: [1;36mnil[0m,
+  username: [31m[1;31m"[0m[31mLibrarian[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$2UWp.wM/T.WkKHoD0EGrruASAOlJW.aEcPYS2U4uajoLtViAS9dZG[1;31m"[0m[31m[0m,
+  age: [1;36mnil[0m,
+  start_year: [1;36mnil[0m,
+  library_id: [1;36mnil[0m,
+  email: [31m[1;31m"[0m[31memail[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553f160[0m
+  id: [1;34m3[0m,
+  name: [1;36mnil[0m,
+  username: [31m[1;31m"[0m[31mnew lib[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$MNJV1R.L1iB9YMoJL/mC8eTrG2H/l.uTuBHEc7XYwS.4cjSf6Kfc.[1;31m"[0m[31m[0m,
+  age: [1;36mnil[0m,
+  start_year: [1;36mnil[0m,
+  library_id: [1;36mnil[0m,
+  email: [31m[1;31m"[0m[31mdsliijh[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553f020[0m
+  id: [1;34m4[0m,
+  name: [1;36mnil[0m,
+  username: [31m[1;31m"[0m[31mnewblock[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$rW1SoXEImufbxZLFB4o5POcJ/scq1Of/.6QnKsRUUye17kCCBnBB2[1;31m"[0m[31m[0m,
+  age: [1;36mnil[0m,
+  start_year: [1;36mnil[0m,
+  library_id: [1;36mnil[0m,
+  email: [31m[1;31m"[0m[31mkid[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553eee0[0m
+  id: [1;34m5[0m,
+  name: [1;36mnil[0m,
+  username: [31m[1;31m"[0m[31mblock[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$EsNrV.hLAwFMoSUpmQ/yCe9nRnjp2Q20y/Kxaoqc5ovsw5gaBOnNa[1;31m"[0m[31m[0m,
+  age: [1;36mnil[0m,
+  start_year: [1;36mnil[0m,
+  library_id: [1;36mnil[0m,
+  email: [31m[1;31m"[0m[31mparty[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553eda0[0m
+  id: [1;34m6[0m,
+  name: [1;36mnil[0m,
+  username: [31m[1;31m"[0m[31mLibstick[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$QccS9TLOidP1bvES/HEX.uNocLx0qUtfZ38F/hlFgnKBYeNuhjqyK[1;31m"[0m[31m[0m,
+  age: [1;36mnil[0m,
+  start_year: [1;36mnil[0m,
+  library_id: [1;36mnil[0m,
+  email: [31m[1;31m"[0m[31mcoolest[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553ec60[0m
+  id: [1;34m7[0m,
+  name: [1;36mnil[0m,
+  username: [31m[1;31m"[0m[31mlibble[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$VbhXe3Hy6R9yxLnRJV8eNuB034zmw0ByiFI/c.ep4D93yWC/1tmcy[1;31m"[0m[31m[0m,
+  age: [1;36mnil[0m,
+  start_year: [1;36mnil[0m,
+  library_id: [1;36mnil[0m,
+  email: [31m[1;31m"[0m[31mnot[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553eb20[0m
+  id: [1;34m8[0m,
+  name: [31m[1;31m"[0m[31mName[1;31m"[0m[31m[0m,
+  username: [31m[1;31m"[0m[31mlibrahalarious[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$uw5wXRItbYBF8mmzqsdC7eqGOBsRJdKfFTHb8Qi6MpztAyEBbsK/u[1;31m"[0m[31m[0m,
+  age: [1;34m29[0m,
+  start_year: [1;34m1[0m,
+  library_id: [1;34m1[0m,
+  email: [31m[1;31m"[0m[31mpuns[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553e9e0[0m
+  id: [1;34m9[0m,
+  name: [1;36mnil[0m,
+  username: [31m[1;31m"[0m[31mLibstickplus[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$dFAh4TAirNbFOmkQZ6BIROsfNVvUWBJhrZFyRkkhyfCBi8jn6OVXa[1;31m"[0m[31m[0m,
+  age: [1;36mnil[0m,
+  start_year: [1;36mnil[0m,
+  library_id: [1;36mnil[0m,
+  email: [31m[1;31m"[0m[31mlip[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553e8a0[0m
+  id: [1;34m10[0m,
+  name: [1;36mnil[0m,
+  username: [31m[1;31m"[0m[31muser[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$5pQ1gKep7BvTYQ2kJNuN0.foDOPmnjokk7NBWaXNgDsIEUytDj7gi[1;31m"[0m[31m[0m,
+  age: [1;36mnil[0m,
+  start_year: [1;36mnil[0m,
+  library_id: [1;36mnil[0m,
+  email: [31m[1;31m"[0m[31memail[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553e760[0m
+  id: [1;34m11[0m,
+  name: [1;36mnil[0m,
+  username: [31m[1;31m"[0m[31mLibrawhat[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$tVpcPkuB4rpz9TUJ2ub24edJN7CAfX/s9uudPlQKj/Acm/rfuFfGq[1;31m"[0m[31m[0m,
+  age: [1;36mnil[0m,
+  start_year: [1;36mnil[0m,
+  library_id: [1;36mnil[0m,
+  email: [31m[1;31m"[0m[31myouknow[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553e620[0m
+  id: [1;34m12[0m,
+  name: [31m[1;31m"[0m[31mFullname[1;31m"[0m[31m[0m,
+  username: [31m[1;31m"[0m[31mlibber[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$UvVvUvBlM28EjTABCvrc7OfpIEVQQpr5HawPGbEpkk57vXOUjBbO6[1;31m"[0m[31m[0m,
+  age: [1;34m21[0m,
+  start_year: [1;34m2000[0m,
+  library_id: [1;34m1[0m,
+  email: [31m[1;31m"[0m[31memail[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553e4e0[0m
+  id: [1;34m13[0m,
+  name: [31m[1;31m"[0m[31mFullname[1;31m"[0m[31m[0m,
+  username: [31m[1;31m"[0m[31mlibertarian[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$965FNoRRkQsSge203wtUHOz6QkhBK9EJ3pDT911i87QBfmrAee.KW[1;31m"[0m[31m[0m,
+  age: [1;34m0[0m,
+  start_year: [1;34m2000[0m,
+  library_id: [1;34m1[0m,
+  email: [31m[1;31m"[0m[31memail[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553e3a0[0m
+  id: [1;34m14[0m,
+  name: [31m[1;31m"[0m[31mName[1;31m"[0m[31m[0m,
+  username: [31m[1;31m"[0m[31mnew[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$7UOreCXZAiEqurAyuI1Xcu9vxezLSz3Ywi5DtQPWZuOAnYQa.1e8K[1;31m"[0m[31m[0m,
+  age: [1;34m21[0m,
+  start_year: [1;34m2000[0m,
+  library_id: [1;34m1[0m,
+  email: [31m[1;31m"[0m[31mnew[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553e260[0m
+  id: [1;34m15[0m,
+  name: [31m[1;31m"[0m[31msteve[1;31m"[0m[31m[0m,
+  username: [31m[1;31m"[0m[31mnewy[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$b6IJ3OYnzj4LC.5jqFrdh.RAW4kmEaWDB5hgDMs6lSBBknsUb6dAa[1;31m"[0m[31m[0m,
+  age: [1;34m0[0m,
+  start_year: [1;34m0[0m,
+  library_id: [1;34m1[0m,
+  email: [31m[1;31m"[0m[31mkjh[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553e120[0m
+  id: [1;34m16[0m,
+  name: [31m[1;31m"[0m[31mGraphic Calendr[1;31m"[0m[31m[0m,
+  username: [31m[1;31m"[0m[31mLibra Tarian[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$ocKDFSrFP.UIGBvumfDAzeULpQG/LCiZNIcHycRju.Br7Bho5DNgC[1;31m"[0m[31m[0m,
+  age: [1;34m22[0m,
+  start_year: [1;34m200[0m,
+  library_id: [1;34m1[0m,
+  email: [31m[1;31m"[0m[31melkja[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553dfe0[0m
+  id: [1;34m17[0m,
+  name: [31m[1;31m"[0m[31mYo mama[1;31m"[0m[31m[0m,
+  username: [31m[1;31m"[0m[31mlibtest[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$VpeqlE.GW9DYliTswAxxH.fSIr9w.mqSF3Kn73oYOpzxsgfkViCxm[1;31m"[0m[31m[0m,
+  age: [1;34m10[0m,
+  start_year: [1;34m1900[0m,
+  library_id: [1;34m1[0m,
+  email: [31m[1;31m"[0m[31memail[1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Librarian:0x0000000553dea0[0m
+  id: [1;34m18[0m,
+  name: [31m[1;31m"[0m[31mfull[1;31m"[0m[31m[0m,
+  username: [31m[1;31m"[0m[31mlibby[1;31m"[0m[31m[0m,
+  password_digest:
+   [31m[1;31m"[0m[31m$2a$10$tD9vsaFx7yObiF4rCbDf1ekiFJCGkH9ZRSLydQQHK3aer/QYl82nu[1;31m"[0m[31m[0m,
+  age: [1;34m22[0m,
+  start_year: [1;34m2000[0m,
+  library_id: [1;34m1[0m,
+  email: [31m[1;31m"[0m[31memail[1;31m"[0m[31m[0m[32m>[0m]

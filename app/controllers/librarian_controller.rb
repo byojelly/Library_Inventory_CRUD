@@ -4,7 +4,7 @@ class LibrarianController < HelperController
 
     use Rack::Flash
             get '/librarians' do
-              binding.pry
+    #          binding.pry
               if librarian_logged_in?
                   @librarians = Librarian.all
                   @librarian = Librarian.find_by(id: session[:librarian_id])
