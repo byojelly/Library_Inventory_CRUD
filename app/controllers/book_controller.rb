@@ -9,7 +9,7 @@ class BookController < HelperController
     get '/books/:id' do
 
         @book = Book.find_by(id: params[:id])
-binding.pry
+#binding.pry
         erb :'/books/show'
     end
     get '/books/:id/edit' do
@@ -27,14 +27,14 @@ binding.pry
           end
     end
     patch '/books/:id' do
-binding.pry
+#binding.pry
           if   params[:name]=="" || params[:author]=="" || params[:pages]=="" || params[:available]==""
                   flash[:message] = "Please do not leave the input sections empty when submiting an edit."
                   redirect "/books/#{params[:id]}/edit"
           elsif !is_number?(params[:pages])
                   flash[:message] = "Please ensure that the pages input is numerical."
                   redirect "/books/#{params[:id]}/edit"
-    #      elsif 
+    #      elsif
 
           else
                   @book = Book.find_by(id: params[:id])
