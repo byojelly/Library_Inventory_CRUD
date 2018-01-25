@@ -1,0 +1,38 @@
+<center>
+    <h1>Librarian: <%=@librarian.username%></h1>
+    <h1>Edit Library Page for <%=@library.name%></h1>
+
+      <form action="/libraries/<%= @library.id %>" method="POST">
+        <input type="hidden" name="_method" value="PATCH">
+
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="<%= @library.name %>">
+    <br></br>
+      <label for="contact_phone">Phone Number</label>
+      <input type="text" name="contact_phone" id="contact_phone" value="<%= @library.contact_phone %>">
+  <br></br>
+      <label for="contact_email">Email</label>
+      <input type="text" name="contact_email" id="contact_email" value="<%= @library.contact_email %>">
+  <br></br>
+      <label for="address_street">Adress Street</label>
+      <input type="text" name="address_street" id="address_street" value="<%= @library.address_street %>">
+  <br></br>
+      <label for="address_city">City</label>
+      <input type="text" name="address_city" id="address_city" value="<%= @library.address_city %>">
+  <br></br>
+      <label for="address_state">State</label>
+      <input type="text" name="address_state" id="address_state" value="<%= @library.address_state %>">
+  <br></br>
+      <label for="address_zipcode">Zipcode</label>
+      <input type="text" name="address_zipcode" id="address_zipcode" value="<%= @library.address_zipcode %>">
+  <br></br>
+      <label for="hours_of_operation">Hours of Operation</label>
+      <input type="text" name="hours_of_operation" id="hours_of_operation" value="<%= @library.hours_of_operation %>">
+  <br></br>
+
+        <input type="submit" value="Save">
+      </form>
+      <a href="/libraries/<%=@library.id%>">Cancel</a>
+
+
+</center>

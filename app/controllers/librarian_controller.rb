@@ -92,7 +92,7 @@ class LibrarianController < HelperController
                       elsif !params.has_key?("library_id")
                             flash[:message] = "Please make sure that you select a library."
                             redirect "/librarians/#{session[:librarian_id]}/edit"
-                      end
+                      else
                                 @librarian.update(name: params[:name],
                                                   username: params[:username],
                                                   age: params[:age],
@@ -103,5 +103,6 @@ class LibrarianController < HelperController
                                 @librarian.save
                                 flash[:message] = "Successfully updated consumer profile."
                                 redirect("/librarians/#{@librarian.id}")
+                      end
             end
 end

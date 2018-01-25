@@ -28,60 +28,6 @@ binding.pry
           end
     end
 
-# =>                    post '/signup' do
-# =>                #binding.pry
-# =>                        #lets do some signup validations
-# =>                                    #make sure, (only 1 user is selected), and that (both buttons arent left blank)
-# =>                                  if (params.has_key?("consumer") && params.has_key?("librarian")) || (!params.has_key?("consumer") && !params.has_key?("librarian"))
-# =>                                    flash[:message] = "Please select either Consumer or Librarian as a usertype. Not both."
-# =>                                      redirect '/signup'
-# =>                                    #make sure username, email and password arent blank
-# =>                                  elsif params[:username]=="" || params[:email]=="" || params[:password]==""
-# =>                                    flash[:message] = "Please do not leave username/email/password empty."
-# =>                                      redirect '/signup'
-# =>                                    #if the consumer was checked
-# =>                                  elsif params.has_key?("consumer")
-# =>                                        #error if the user already exists
-# =>                                        if !!Consumer.find_by(username: params[:username])
-# =>                                                flash[:message] = "This Consumer username has already been taken. Please makeup a new username."
-# =>                                                redirect to '/signup'
-# =>                                        #if user doesnt exist create Consumer
-# =>                                        else
-# =>                                            @consumer = Consumer.create(username: params[:username], email: params[:email], password: params[:password])
-# =>                                            session[:consumer_id] = @consumer.id
-# =>                #binding.pry
-# =>                                            erb :'/consumers/onboarding'
-# =>                                        end
-# =>                                    #if librarian was checked
-# =>                                  elsif params.has_key?("librarian")
-# =>                                          #see if username exists
-# =>                                        if !!Librarian.find_by(username: params[:username])
-# =>                                                flash[:message] = "This Librarian username has already been taken. Please makeup a new username."
-# =>                                                redirect to '/signup'
-# =>                                        else
-# =>                                          #if username doesnt exist create Librarian
-# =>                                            @librarian = Librarian.create(username: params[:username], email: params[:email], password: params[:password])
-# =>                                            session[:librarian_id] = @librarian.id
-# =>                #binding.pry
-# =>                                            erb :'/librarians/onboarding'
-# =>                                        end
-# =>
-# =>                                  end
-# =>
-# =>
-# =>                     end
-
-
-
-
-
-
-
-
-
-
-
-
     get '/libraries/:id' do
 
           @library = Library.find_by(id: params[:id])
@@ -100,5 +46,57 @@ binding.pry
           erb :'/libraries/show'
 
     end
+    get '/libraries/:id/edit' do
+#binding.pry
+              if librarian_logged_in?
+                  @library = Library.find_by(id: params[:id])
+                  @librarian = Librarian.find_by(id: params[:id])
+#binding.pry
+                  erb :'/libraries/edit'
+              else
+                redirect '/login'
+              end
+    end
 
+
+#not using many validations for sake of time
+    patch '/libraries/:id' do
+
+            @library = Library.find_by(id: params[:id])
+#binding.pry
+            if params[:name]=="" || params[:contact_phone]=="" || params[:contact_email]=="" || params[:address_street]=="" || params[:address_city]=="" || params[:address_state]=="" || params[:address_zipcode]=="" || params[:hours_of_operation]==""
+                  flash[:message] = "Please do not leave input fields empty."
+                  redirect "/libraries/#{params[:id]}/edit"
+            else
+                @library.update(name: params[:name], contact_phone: params[:contact_phone], contact_email: params[:contact_email], address_street: params[:address_street], address_city: params[:address_city], address_state: params[:address_state], address_zipcode: params[:address_zipcode], hours_of_operation: params[:hours_of_operation])
+                @library.save
+                flash[:message] = "Successfully updated library profile."
+                redirect   "/libraries/#{@library.id}"
+            end
+    end
+# =>              patch '/librarians/:id' do
+# =>          #binding.pry
+# =>                        @librarian = Librarian.find_by(id: params[:id])
+# =>                        if params[:name]=="" || params[:age]=="" || params[:start_year]=="" || params[:username]==""  || params[:address]==""  || params[:email]==""
+# =>                                flash[:message] = "Please do not leave the input sections empty when submiting an edit."
+# =>                                redirect "/librarians/#{session[:librarian_id]}/edit"
+# =>                        elsif !is_number?(params[:age]) || !is_number?(params[:start_year])
+# =>                                flash[:message] = "Please make sure that your age and first year of employment is numerical."
+# =>                                redirect "/librarians/#{session[:librarian_id]}/edit"
+# =>                        elsif !params.has_key?("library_id")
+# =>                              flash[:message] = "Please make sure that you select a library."
+# =>                              redirect "/librarians/#{session[:librarian_id]}/edit"
+# =>                        else
+# =>                                  @librarian.update(name: params[:name],
+# =>                                                    username: params[:username],
+# =>                                                    age: params[:age],
+# =>                                                    start_year: params[:start_year],
+# =>                                                    email: params[:email],
+# =>                                                    library_id: params[:library_id])
+# =>                                              #above method can be written  with a neater hash nested under a consumer key in the patch form
+# =>                                  @librarian.save
+# =>                                  flash[:message] = "Successfully updated consumer profile."
+# =>                                  redirect("/librarians/#{@librarian.id}")
+# =>                        end
+# =>              end
 end
