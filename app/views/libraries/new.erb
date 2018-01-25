@@ -1,0 +1,42 @@
+<center>
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+
+      <h1>Create a new library branch</h1>
+      <form action="/libraries/new" method="POST">
+            <b><label>Branch Name:</label></b>
+              <input type="text" name="name" id="name" placeholder="">
+      <br></br>
+              <b><label>Contact Phone Number?</label></b>
+              <input type="text" name="contact_phone" id="contact_phone" placeholder="">
+      <br></br>
+              <b><label>Contact Email?</label></b>
+              <input type="text" name="contact_email" id="contact_email" placeholder="">
+        <br></br>
+            <b><label>Street Address?</label></b>
+              <input type="text" name="address_street" id="address_street" placeholder="">
+      <br></br>
+            <b><label>City?</label></b>
+              <input type="text" name="address_city" id="address_city" placeholder="">
+      <br></br>
+            <b><label>State?</label></b>
+              <input type="text" name="address_state" id="address_state" placeholder="">
+      <br></br>
+              <b><label>Zipcode?</label></b>
+                <input type="text" name="address_zipcode" id="address_zipcode" placeholder="">
+      <br></br>
+            <b><label>Hours of Operation?</label></b>
+              <input type="text" name="hours_of_operation" id="hours_of_operation" placeholder="">
+
+<br></br>
+
+
+
+              <input type="submit" name="submit" value="Create New User">
+
+      </form>
+
+      <a href="/login">Already a user. Click here to login</a>
+</center>
