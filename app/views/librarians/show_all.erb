@@ -1,0 +1,11 @@
+<center>
+      <h1>Hi <%=@librarian.username%></h1>
+      <h1>All Librarians Accounts by username:<h1>
+
+
+        <%@librarians.each do |c|%>
+          <a href="/librarians/<%=c.id%>"><%=c.username%></a>
+        <%end%>
+        <br></br>
+        <a href="/logout">Log Out</a>
+<center>

@@ -3,6 +3,18 @@ require 'rack-flash'
 class LibrarianController < HelperController
 
     use Rack::Flash
+            get '/librarians' do
+              binding.pry
+              if librarian_logged_in?
+                  @librarians = Librarian.all
+                  @librarian = Librarian.find_by(id: session[:librarian_id])
+                  erb :"/librarians/show_all"
+              elsif consumer_logged_in?
+                  redirect "/consumers/#{@consumer.id}"
+              else
+                  redirect "/login"
+              end
+            end
             post '/librarians/onboarding' do
                   @librarian = Librarian.find_by(id: session[:librarian_id])
 #binding.pry
@@ -34,11 +46,7 @@ class LibrarianController < HelperController
                       erb :'/librarians/onboarding'
                     end
             end
-            get '/consumers/all' do
-        #this is a view for librarians to view all consumers per library.
-        #should recognize a librarian is logged in
-        #if a consumer is logged in it should redirect to /consumers/:id
-            end
+
             get '/librarians/:id' do
 #binding.pry
                       if librarian_logged_in?
