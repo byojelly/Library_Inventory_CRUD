@@ -1,0 +1,39 @@
+<center>
+    <h1>Hi <%=@librarian.username%></h1>
+    <p>Below you can edit this book:</p>
+
+
+
+
+          <form action="/books/<%= @book.id %>" method="POST">
+            <input type="hidden" name="_method" value="PATCH">
+
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" value="<%= @book.name %>">
+          <br></br>
+            <label for="author">author</label>
+            <input type="text" name="author" id="author" value="<%= @book.author %>">
+          <br></br>
+            <label for="pages">pages</label>
+            <input type="text" name="pages" id="pages" value="<%= @book.pages %>">
+          <br></br>
+            <label for="available">available</label>
+            <input type="text" name="available" id="available" value="<%= @book.available %>">
+          <br></br>
+
+            <p>What Library is the book at?</p>
+            <% Library.all.each do |lib| %>
+                  <label><%= lib.name %></label>
+                      <input type="checkbox" name="library_id" value="<%= lib.id %>" id="<%= lib.name %>" <%='checked' if @book.library_id == lib.id %>>
+                        <br></br>
+            <% end %>
+
+            <input type="submit" value="Save">
+          </form>
+    <br></br>
+          <a href="/books/<%=@book.id%>">Cancel</a>
+
+
+
+
+</center>

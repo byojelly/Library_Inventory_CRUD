@@ -1,0 +1,21 @@
+<center>
+        <h1><%=@book.name%> book page.</h1>
+        <p>Below you will find the details for this book.</p>
+
+        <p><b>Name </b>= <%=@book.name%><p>
+        <p><b>Author </b>= <%=@book.author%><p>
+        <p><b>Pages </b>= <%=@book.pages%><p>
+        <p><b>Currently available? </b>= <%=@book.available%><p>
+        <p><b>Located at </b>=     <a href="/libraries/<%=@book.library_id%>"> <%=Library.find_by(id: @book.library_id).name%> </a>  <p>
+        <p><b>Located in the following section: </b>= <a href="/libraries/<%=@book.section_id%>"><%=Section.find_by(id: @book.section_id).name%>  </a> <p>
+
+
+
+        <br><br>
+        <a href="/books/<%=@book.id%>/edit">Librarians, click here to edit this book</a>
+        <br></br>
+        <a href="/">homepage</a>
+        <br></br>
+        <a href="/logout">Log Out</a>
+
+</center>
