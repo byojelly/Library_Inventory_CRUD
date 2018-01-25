@@ -20,3 +20,5 @@
                                      "library_id"=>"1",
                                      "id"=>"14"]}
 4) rackflash stopped working for alerts
+
+5) libraries/:id  not showing book count for that library

@@ -12,7 +12,7 @@
 
         <p>Librarians at this library: <%=@librarian_count%>    <p>
         <p>Consumers at this library: <%=@consumer_count%>    <p>
-        <p>Books at this library: <a href="/libraries/<%=@library.id%>/books"> <%=@books_count%>  </a>  <p>
+        <p>Books at this library: <%=@books_count%>   <p>
 
         <br><br>
         <a href="/libraries/<%=@library.id%>/edit">Edit this Library</a>
@@ -20,6 +20,8 @@
         <a href="/consumers">View all consumers</a>
         <br></br>
         <a href="/librarians">View all librarians</a>
+        <br></br>
+        <a href="/libraries/<%=@library.id%>/books">View all Books at this library</a>
 
         <br></br>
         <a href="/">homepage</a>

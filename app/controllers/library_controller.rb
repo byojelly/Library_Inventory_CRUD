@@ -56,7 +56,7 @@ class LibraryController < HelperController
               if librarian_logged_in?
                   @library = Library.find_by(id: params[:id])
                   @librarian = Librarian.find_by(id: params[:id])
-binding.pry
+#binding.pry
                   erb :'/libraries/edit'
               else
                 redirect '/login'
@@ -80,11 +80,12 @@ binding.pry
             end
     end
     get '/libraries/:id/books'  do
-binding.pry
+
             @library = Library.find_by(id: params[:id])
             @books = Book.all.select {|x| x.library_id==params[:id].to_i}
             @books_count = @books.count
-
+#binding.pry
+            erb :'/books/show_all'
     end
     get '/libraries/:id/books/new'  do
 binding.pry

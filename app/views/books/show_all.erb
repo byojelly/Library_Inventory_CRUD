@@ -1,9 +1,9 @@
 <center>
 
-      <h1>All Books At the Library: <%=@library.name%>:<h1>
+      <h1>All Books At the Library: <a href="/libraries/<%=@library.id%>"><%=@library.name%></a>:<h1>
 
 
-        <%@books.each do |c|%>
+        <%@books.each do |b|%>
           <a href="/books/<%=b.id%>"><%=b.name%></a>
         <%end%>
         <br></br>
