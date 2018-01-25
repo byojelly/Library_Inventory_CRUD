@@ -6,6 +6,7 @@ end
 
 use Rack::MethodOverride
 
+use LibraryController
 use LibrarianController
 use ConsumerController
 use ApplicationController
