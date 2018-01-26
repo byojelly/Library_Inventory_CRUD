@@ -30,7 +30,7 @@ class ConsumerController < HelperController
                         end
             end
             get '/consumers' do
-binding.pry
+#binding.pry
                       if librarian_logged_in?
                           @consumers = Consumer.all
                           @librarian = Librarian.find_by(id: session[:librarian_id])
@@ -100,7 +100,30 @@ binding.pry
                   flash[:message] = "Successfully updated consumer profile."
                   redirect("/consumers/#{@consumer.id}")
             end
+            get '/consumers/:id/delete' do
+  #      binding.pry
+                    if consumer_logged_in? && params[:id].to_i == session[:consumer_id]
+                      @consumer = Consumer.find_by(id: params[:id])
+                      erb :"/consumers/delete"
+                    elsif librarian_logged_in?
+                      @consumer = Consumer.find_by(id: params[:id])
+                      erb :"/consumers/delete"
+                    else
+                        redirect '/'
+                    end
 
+            end
+
+            delete '/consumers/:id' do
+    #    binding.pry
+              if librarian_logged_in?
+                @consumer = Consumer.delete(params[:id])
+                redirect "/"
+              end
+              @consumer = Consumer.delete(params[:id])
+              session.clear
+              redirect "/"
+            end
 end
 
 
