@@ -1,0 +1,16 @@
+<center>
+  <h1>Are you sure you want to delete this book?<h1/>
+
+    <h3>Book name: <%=@book.name%></h3>
+
+<br></br>
+
+
+    <form action="/books/<%=@book.id%>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Book?">
+    </form>
+
+      <a href="/books/<%=@book.id%>">Cancel</a>
+
+</center>

@@ -72,7 +72,23 @@ class BookController < HelperController
                   redirect("/books/#{@book.id}")
           end
     end
+    get '/books/:id/delete' do
 
+          @book = Book.find_by(id: params[:id])
+              if librarian_logged_in?
+  #  binding.pry
+                erb :"/books/delete"
+              else
+                  redirect("/books/#{@book.id}")
+              end
+    end
+    delete '/books/:id' do
+#binding.pry
+      @library_id = Book.find_by(id: params[:id]).library_id
+      @section_id = Book.find_by(id: params[:id]).section_id
+      @book = Book.delete(params[:id])
+      redirect "/libraries/#{@library_id}/sections/#{@section_id}"  # http://localhost:9393/libraries/2/sections/2
+    end
 
 
 end
