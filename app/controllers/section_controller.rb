@@ -24,6 +24,14 @@ class SectionController < HelperController
                 redirect "/libraries/#{session[:library_id]}/sections/#{@section.id}"
           end
     end
+    patch '' do
+
+    end
+    delete '/sections/:id' do
+#binding.pry
+      @section = Section.delete(params[:id])
+      redirect ("/libraries/#{session[:library_id]}")
+    end
 
 
 

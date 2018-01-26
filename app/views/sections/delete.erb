@@ -1,0 +1,16 @@
+<center>
+  <h1>Are you sure you want to delete this section?<h1/>
+
+    <h3>Section name: <%=@section.name%></h3>
+    <h3>Library: <%=@library.name%></h3>
+<br></br>
+    <h3>Warning, the association for books with this section will be affected and will need to be edited.</h3>
+
+    <form action="/sections/<%=@section.id%>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Section?">
+    </form>
+
+      <a href="/libraries/<%=@library.id%>">Cancel</a>
+
+</center>
