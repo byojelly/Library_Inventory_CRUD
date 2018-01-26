@@ -1,0 +1,16 @@
+<center>
+  <h1>Are you sure you want to delete this Library?<h1/>
+
+    <h3>Library: <%=@library.name%></h3>
+    <h2>Warning, deleting a library will also affect the associations with books, sections, and all user accounts</h2>
+
+<br></br>
+
+    <form action="/libararies/<%=@library.id%>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Library?">
+    </form>
+
+      <a href="/libraries/<%=@library.id%>">Cancel</a>
+
+</center>

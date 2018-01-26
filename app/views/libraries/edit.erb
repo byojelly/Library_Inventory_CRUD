@@ -32,12 +32,16 @@
 
         <input type="submit" value="Save">
       </form>
-      <br></br>
+
           <h3>Edit sections of the library:</h3>
               <%@library.sections.each do |s|%>
                     <a href="/libraries/<%=@library.id%>/sections/<%=s.id%>/edit"><%=s.name%></a>
               <%end%>
           <h3><a href="/libraries/<%=@library.id%>/sections/new">Add a new section to the library</a></h3>
+--------------------------------------
+          <h3><a href="/libraries/<%=@library.id%>/delete">Delete Library</a></h3>
+--------------------------------------
+
 
 <br></br>
       <p>Books at this library: <%=@books_count%>   <p>

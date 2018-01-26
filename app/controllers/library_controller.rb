@@ -29,7 +29,7 @@ class LibraryController < HelperController
     end
 
     get '/libraries/:id' do
-          session.delete("library_id")  #used to close the section create loop for dynamic routes in post request for new and delete requests
+        #  session.delete("library_id")  #used to close the section create loop for dynamic routes in post request for new and delete requests
           @library = Library.find_by(id: params[:id])
           @librarians= Librarian.all
           @consumers = Consumer.all
@@ -55,7 +55,7 @@ class LibraryController < HelperController
 #binding.pry
               if librarian_logged_in?
                   @library = Library.find_by(id: params[:id])
-                  @librarian = Librarian.find_by(id: params[:id])
+                  @librarian = Librarian.find_by(id: session[:librarian_id])
                   @books = Book.all
                   @books_array =   @books.collect do |c|
                                            c.library_id == params[:id].to_i
@@ -86,6 +86,24 @@ class LibraryController < HelperController
                 redirect   "/libraries/#{@library.id}"
             end
     end
+    get '/libraries/:id/delete' do
+#binding.pry
+                if librarian_logged_in?
+                  @library = Library.find_by(id: params[:id])
+                  erb :"/libraries/delete"
+                else
+                    redirect '/'
+                end
+    end
+    delete '/libraries/:id' do
+binding.pry
+
+        @library = Library.delete(params[:id])
+        redirect "/"
+
+    end
+
+
     get '/libraries/:id/books'  do
 
             @library = Library.find_by(id: params[:id])

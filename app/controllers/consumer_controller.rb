@@ -116,6 +116,7 @@ class ConsumerController < HelperController
 
             delete '/consumers/:id' do
     #    binding.pry
+    #below allows a librarian to delete a consumer account, but not be logged out themself during the proccess
               if librarian_logged_in?
                 @consumer = Consumer.delete(params[:id])
                 redirect "/"
