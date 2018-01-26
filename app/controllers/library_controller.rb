@@ -29,7 +29,7 @@ class LibraryController < HelperController
     end
 
     get '/libraries/:id' do
-
+          session.delete("library_id")  #used to close the section create loop for dynamic routes in post request
           @library = Library.find_by(id: params[:id])
           @librarians= Librarian.all
           @consumers = Consumer.all
@@ -96,6 +96,7 @@ class LibraryController < HelperController
     end
     get '/libraries/:id/books/new'  do
 #binding.pry
+#posts request comes from book controller
           if  logged_in?
               if librarian_logged_in?
                     @library = Library.find_by(id: params[:id])
@@ -107,12 +108,44 @@ class LibraryController < HelperController
             redirect '/login'
           end
     end
-    get '/libraries/:id/sections/:section_id' do
+    get '/libraries/:id/sections/new' do
+#binding.pry
+            session.delete("library_id")    #a session param is added when creating a new section for dynamic routes in post request. The deletion allows the ability for the session added to not persist outside teh creation of the section
+            if  logged_in?
+                if librarian_logged_in?
+                      @library = Library.find_by(id: params[:id])
+          #below is work around to allow the post parameter to get additional information for creating a new sections
+                      @next_section_id = Section.count + 1
 
+                      session[:library_id] = @library.id  #allows our post request to use the id to redirect the route
+
+#binding.pry
+                        erb :'/sections/new'
+                else
+                      redirect '/'
+                end
+            else
+              redirect '/login'
+            end
+
+          #post request will come from SectionController
+    end
+    get '/libraries/:id/sections/:section_id' do
+          session.delete("library_id")  #used to close the section create loop for dynamic routes in post request
           @library = Library.find_by(id: params[:id])
           @section = Section.find_by(id: params[:section_id])
+
 #binding.pry
           erb :"/sections/show"
     end
+    get '/libraries/:id/sections/:section_id/edit' do
+          @librarian = Librarian.find_by(id: session[:librarian_id])
+          @library = Library.find_by(id: params[:id])
+          @section = Section.find_by(id: params[:section_id])
+
+binding.pry
+          erb :"/sections/edit"
+    end
+
 
 end

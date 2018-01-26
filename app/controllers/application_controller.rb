@@ -7,9 +7,11 @@ class ApplicationController < HelperController
     get '/' do
 #binding.pry
  #first line of code is required at startup because all future code requires a library to be in the database. this issue arose when i rolled back all of my rack migrations to start with a fresh databse.  Originaly the librarian controller required the library to exist when creating a new library.  Now works
+
         if Library.all.empty?
             erb :startup
         else
+          session.delete("library_id")  #used to close the section create loop for dynamic routes in post request
           @libraries = Library.all
            erb :homepage
         end
@@ -67,7 +69,7 @@ class ApplicationController < HelperController
               if consumer_logged_in?
                 redirect "/consumers/#{session[:consumer_id]}"
               else
-                binding.pry
+              #  binding.pry
                   redirect "/librarians/#{session[:librarian_id]}"
               end
         else

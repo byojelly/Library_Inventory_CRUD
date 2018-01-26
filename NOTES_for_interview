@@ -28,3 +28,4 @@
 
 7) Book new erb / - What library does the book reside?.  Unable to show the variable @library.name by itself and to have that variable transfer through the form onto the post request to create the new book
       HOW DO YOU LOCK A FORM INPUT VALUE or pass an instance variable through the form to the post request
+8) Section new workaround possible ,Library controller '/libraries/:id/sections/new', at get request add to the session what the new session id would be, to be viewed in post

@@ -1,0 +1,26 @@
+<center>
+    <h1>Librarian: <%=@librarian.username%></h1>
+    <h1>Edit Section Page for <%=@section.name%> at the <%=@library.name%> library</h1>
+
+
+              <form action="/sections/<%= @section.id %>" method="POST">
+                <input type="hidden" name="_method" value="PATCH">
+
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="<%= @section.name %>">
+              <br></br>
+                <label for="location">location</label>
+                <input type="text" name="location" id="location" value="<%= @section.location %>">
+              <br></br>
+                <input type="submit" value="Save">
+              </form>
+        <br></br>
+              <a href="/libraries/<%=@library.id%>/sections/<%=@section.id%>/delete">Delete</a>
+              <br></br>
+              <a href="/libraries/<%=@library.id%>">Cancel</a>
+
+
+
+
+
+    </center>
