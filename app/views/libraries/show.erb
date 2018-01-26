@@ -14,6 +14,11 @@
         <p>Consumers at this library: <%=@consumer_count%>    <p>
         <p>Books at this library: <%=@books_count%>   <p>
 
+        <h3>Sections of the library:</h3>
+            <%@library.sections.each do |s|%>
+                  <a href="/libraries/<%=@library.id%>/sections/<%=s.id%>"><%=s.name%></a>
+            <%end%>
+        <p>---------------------------------------------------</p>    
         <br><br>
         <a href="/libraries/<%=@library.id%>/edit">Edit this Library</a>
         <br></br>

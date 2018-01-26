@@ -42,7 +42,7 @@ class LibrarianController < HelperController
                             @librarian.save
                             redirect "/librarians/#{@librarian.id}"
                           end
-                  
+
                     else
                             flash[:message] = "Please try again. You must select a local library during the onboarding."
                               erb :'/librarians/onboarding'

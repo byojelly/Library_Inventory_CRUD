@@ -62,6 +62,8 @@ class LibraryController < HelperController
                                         end
                   @books_count = @books_array.count(true)
 #binding.pry
+
+#binding.pry
                   erb :'/libraries/edit'
               else
                 redirect '/login'
@@ -104,6 +106,13 @@ class LibraryController < HelperController
           else
             redirect '/login'
           end
+    end
+    get '/libraries/:id/sections/:section_id' do
+
+          @library = Library.find_by(id: params[:id])
+          @section = Section.find_by(id: params[:section_id])
+#binding.pry
+          erb :"/sections/show"
     end
 
 end

@@ -1,0 +1,12 @@
+<center>
+<h1><%=@section.name%> section at the <%=@library.name%> library</h1>
+  <p><b>Location in library:</b> <%=@section.location%><p>
+  <%@section.books.each do |book|%>
+    <a href="/books/<%=book.id%>"><%=book.name%></a>
+  <%end%>
+
+<br></br>
+<br></br>
+<br></br>
+<a href="/">Return to Homepage</a>
+</center>
