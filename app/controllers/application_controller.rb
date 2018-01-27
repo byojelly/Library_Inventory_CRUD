@@ -5,7 +5,7 @@ class ApplicationController < HelperController
     use Rack::Flash
 
     get '/' do
-#binding.pry
+binding.pry
  #first line of code is required at startup because all future code requires a library to be in the database. this issue arose when i rolled back all of my rack migrations to start with a fresh databse.  Originaly the librarian controller required the library to exist when creating a new library.  Now works
 
         if Library.all.empty?
