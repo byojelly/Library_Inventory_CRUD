@@ -6,8 +6,8 @@
         <p><b>Author </b>= <%=@book.author%><p>
         <p><b>Pages </b>= <%=@book.pages%><p>
         <p><b>Currently available? </b>= <%=@book.available%><p>
-        <p><b>Located at </b>=     <a href="/libraries/<%=@book.library_id%>"> <%=Library.find_by(id: @book.library_id).name%> </a>  <p>
-        <p><b>Located in the following section: </b>= <a href="/libraries/<%=@book.library_id%>/sections/<%=@book.section_id%>"><%=Section.find_by(id: @book.section_id).name%>  </a> <p>
+        <p><b>Located at </b>=     <a href="/libraries/<%=@library.id%>"> <%=@library.name%> </a>  <p>
+        <p><b>Located in the following section: </b>= <a href="/libraries/<%=@library.id%>/sections/<%=@section.id%>"><%=@section.name%>  </a> <p>
 
 
 

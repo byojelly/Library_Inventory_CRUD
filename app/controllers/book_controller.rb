@@ -7,13 +7,35 @@ class BookController < HelperController
     #libraries all page is homepage
 
     get '/books/:id' do
+#binding.pry
+        if logged_in?
+              if librarian_logged_in?
+                @book = Book.find_by(id: params[:id])
+                @librarian = Librarian.find_by(id: session[:librarian_id])
+                @library = Library.find_by(id: @librarian.library_id)
+                @section = Section.find_by(id: @book.section_id)
+              else
+                @book = Book.find_by(id: params[:id])
+                @consumer = Consumer.find_by(id: session[:consumer_id])
+                @library = Library.find_by(id: @consumer.library_id)
+                @section = Section.find_by(id: @book.section_id)
+              end
+        else
+              redirect "/login"
 
-        @book = Book.find_by(id: params[:id])
+        end
+
+
+
+
+      #  @library = session[:library]
+      #  session.delete("library_id")
 #binding.pry
         erb :'/books/show'
     end
     get '/books/:id/edit' do
 #binding.pry
+
           if logged_in?
               if consumer_logged_in?
                   redirect "/books/#{params[:id]}"
@@ -27,24 +49,22 @@ class BookController < HelperController
           end
     end
     post '/books/new' do
+  #    binding.pry
 #unable params does not yield the library id form the urls
 #binding.pry
-              if   params[:name]=="" || params[:author]=="" || params[:pages]=="" || params[:available]==""
+              if   params[:name]=="" || params[:author]=="" || params[:pages]==""
                     flash[:message] = "Please do not leave the input sections empty when submiting an edit."
-                    redirect "/libraries/#{@library.id}/books/new"
+                    redirect "/libraries/#{session[:library_id]}/books/new"
 
               elsif !is_number?(params[:pages])
                       flash[:message] = "Please ensure that the pages input is numerical."
-                      redirect "/libraries/#{@library.id}/books/new"
-              elsif params.has_key?("y") && params.has_key?("n")
-                      flash[:message] = "Please only select yes or no for availability."
-                      redirect "/libraries/#{@library.id}/books/new"
-              elsif !params.has_key?("y") && !params.has_key?("n")
-                      flash[:message] = "Please select yes or no for availability."
-                      redirect "/libraries/#{@library.id}/books/new"
+                      redirect "/libraries/#{session[:library_id]}/books/new"
+
+
               else
 #binding.pry
-                        @book = Book.create(name: params[:name], author: params[:author], pages: params[:pages], available: params[:available], library_id: params[:library_id], section_id: params[:section_id])
+                        @book = Book.create(name: params[:name], author: params[:author], pages: params[:pages], available: "y", library_id: session[:library_id], section_id: params[:section_id])
+
                         redirect "/books/#{@book.id}"
               end
     end

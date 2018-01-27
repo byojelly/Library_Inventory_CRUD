@@ -118,6 +118,7 @@ binding.pry
           if  logged_in?
               if librarian_logged_in?
                     @library = Library.find_by(id: params[:id])
+                    session[:library_id] = @library.id
                     erb :'/books/new'
               else
                     redirect '/'

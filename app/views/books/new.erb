@@ -16,15 +16,11 @@
               <input type="text" name="pages" id="pages" placeholder="">
         <br></br>
 
-            <b><label>Availabile at Library?</label></b>
-              <ul><label>Yes</label>
-                  <input type="checkbox" name="y" id="y">
-              <label>No</label>
-                  <input type="checkbox" name="n" id="n">
-              </ul>
+            <b><label>Availabililty = When a new book is created in the system it is automatically made available?</label></b>
+          
       <br></br>
-      <b><label>What Library does the book reside (input the exact preset value)?</label></b>
-      <input type="text" name="library_id" id="library_id" placeholder="<%=@library.id%>">
+      <b><p>What Library does the book reside:</b> <a href="/libraries/<%=@library.id%>"><%=@library.name%></p>
+
     <br></br>
 
 
