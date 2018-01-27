@@ -1,21 +1,7 @@
-#need 3 libraries
-#need 3 librarians for each library_id
-create_table "books", force: :cascade do |t|
-  t.string "name"
-  t.string "author"
-  t.integer "pages"
-  t.string "available"
-  t.integer "library_id"
-  t.integer "section_id"
-end
-
-
-
-
 Library.destroy_all
 Librarian.destroy_all
 Section.destroy_all
-Books.destroy_all
+Book.destroy_all
 Consumer.destroy_all
 #not creating the has many through has many table at the moment
 Library.create!([{
@@ -152,7 +138,7 @@ Book.create!([{
         name: "How To: Kwik e Mart Setup", author: "Apu", pages: 200, available: "y", library_id: 3, section_id: 2
       },
         {
-        name: "How To: Begin Your Empire Today", author: "Mr. Burns", pages: 300, available: "y", library_idB: 3, section_id: 2
+        name: "How To: Begin Your Empire Today", author: "Mr. Burns", pages: 300, available: "y", library_id: 3, section_id: 2
         },
         {
         name: "Beware: House of Horrors Part 1", author: "Smithers", pages: 100, available: "y", library_id: 3, section_id: 1
