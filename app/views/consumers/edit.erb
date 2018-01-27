@@ -22,7 +22,7 @@
         <p>Your Local Library</p>
         <% Library.all.each do |lib| %>
               <label><%= lib.name %></label>
-                  <input type="checkbox" name="library_id" value="<%= lib.id %>" id="<%= lib.name %>" <%='checked' if @consumer.libraries.include?(lib) %>>
+                  <input type="checkbox" name="library_id" value="<%= lib.id %>" id="<%= lib.name %>" <%='checked' if @consumer.library == lib %>>
                     <br></br>
         <% end %>
 

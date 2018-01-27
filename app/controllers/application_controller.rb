@@ -5,8 +5,8 @@ class ApplicationController < HelperController
     use Rack::Flash
 
     get '/' do
-binding.pry
-
+#binding.pry
+          #session.delete("librarian_id")
           session.delete("library_id")  #used to close the section create loop for dynamic routes in post request
           @libraries = Library.all
            erb :homepage
