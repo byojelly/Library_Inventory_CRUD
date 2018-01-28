@@ -11,8 +11,9 @@ Specs:
 - [x] Ensure that users can't modify content created by other users
 - [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
 - [X] Include user input validations
-- [ ] Display validation failures to user with error message (example form URL e.g. /posts/new)
-- [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+- [X] Display validation failures to user with error message (example form URL e.g. /posts/new)
+          1-28-18 Implemented however not always working
+- [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
 - [X] You have a large number of small Git commits
@@ -23,8 +24,10 @@ Confirm
 Additional Items
 
 1) While you're working on it, record a 30 min coding session with your favorite screen capture tool. During the session, either think out loud or not. It's up to you. You don't need to submit the video, but we may ask for it at a later time.
+    Done
 
 2) Make sure to create a good README.md with a short description, install instructions, a contributors guide and a link to the license for your code.
+    Done
 
 3) Prepare a short video demo (narration helps!) describing how a user would interact with your working application.
 

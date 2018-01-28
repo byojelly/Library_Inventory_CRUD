@@ -73,7 +73,7 @@ class ApplicationController < HelperController
         end
      end
      post '/login' do
-binding.pry
+#binding.pry
               if   params[:username]=="" ||  params[:password]==""
                       flash[:message] = "Please do not leave username/password blank when logging in."
                       redirect to '/login'
