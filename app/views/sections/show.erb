@@ -2,9 +2,10 @@
 <h1><%=@section.name%> section at the <%=@library.name%> library</h1>
   <p><b>Location in library:</b> <%=@section.location%><p>
   <p>Books in this section:</br>
-  <%@section.books.each do |book|%>
-    <a href="/books/<%=book.id%>"><%=book.name%></a>
-  <%end%>
+
+      <%@section.books.each do |book|%>
+    <li>    <a href="/books/<%=book.id%>"><%=book.name%></a>  </li>
+      <%end%>
 
 <br></br>
 <br></br>
