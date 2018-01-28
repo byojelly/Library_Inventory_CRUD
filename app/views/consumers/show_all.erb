@@ -1,10 +1,12 @@
 <center>
       <h1>All Consumer Accounts by username:<h1>
 
+        <h3>
+              <%@consumers.each do |c|%>
+            <li>    <a href="/consumers/<%=c.id%>"><%=c.username%></a>  </li>
+              <%end%>
+      </h3>
 
-        <%@consumers.each do |c|%>
-          <a href="/consumers/<%=c.id%>"><%=c.username%></a>
-        <%end%>
         <br></br>
         <a href="/logout">Log Out</a>
 <center>
