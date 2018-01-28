@@ -2,10 +2,11 @@
 
       <h1>All Books At the Library: <a href="/libraries/<%=@library.id%>"><%=@library.name%></a>:<h1>
 
-
+        <h3>
         <%@books.each do |b|%>
-          <a href="/books/<%=b.id%>"><%=b.name%></a>
+        <li>  <a href="/books/<%=b.id%>"><%=b.name%></a>  </li>
         <%end%>
+      </h3>
     <br></br>
         <a href="/libraries/<%=@library.id%>/books/new">Create new books for this library.</a>
     <br></br>
