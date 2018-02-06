@@ -79,7 +79,7 @@ binding.pry
                                 end
             end
             patch '/librarians/:id' do
-#binding.pry
+binding.pry
                       @librarian = Librarian.find_by(id: params[:id])
                       if params[:name]=="" || params[:age]=="" || params[:start_year]=="" || params[:username]==""  || params[:address]==""  || params[:email]==""
                               flash[:message] = "Please do not leave the input sections empty when submiting an edit."
