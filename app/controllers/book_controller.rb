@@ -49,22 +49,24 @@ class BookController < HelperController
           end
     end
     post '/books/new' do
-  #    binding.pry
+#binding.pry
 #unable params does not yield the library id form the urls
 #binding.pry
-              if   params[:name]=="" || params[:author]=="" || params[:pages]==""
+              if   params[:book][:name]=="" || params[:book][:author]=="" || params[:book][:pages]==""
                     flash[:message] = "Please do not leave the input sections empty when submiting an edit."
                     redirect "/libraries/#{session[:library_id]}/books/new"
 
-              elsif !is_number?(params[:pages])
+              elsif !is_number?(params[:book][:pages])
                       flash[:message] = "Please ensure that the pages input is numerical."
                       redirect "/libraries/#{session[:library_id]}/books/new"
 
 
               else
 #binding.pry
-                        @book = Book.create(name: params[:name], author: params[:author], pages: params[:pages], available: "y", library_id: session[:library_id], section_id: params[:section_id])
-
+                        @book = Book.create(params[:book])
+                        @book.available = "y"
+                        @book.library_id = session[:library_id]
+                        @book.save
                         redirect "/books/#{@book.id}"
               end
     end
