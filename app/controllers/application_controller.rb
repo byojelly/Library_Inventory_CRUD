@@ -19,25 +19,25 @@ class ApplicationController < HelperController
     end
 
     post '/signup' do
-#binding.pry
+binding.pry
         #lets do some signup validations
                     #make sure, (only 1 user is selected), and that (both buttons arent left blank)
                   if (params.has_key?("consumer") && params.has_key?("librarian")) || (!params.has_key?("consumer") && !params.has_key?("librarian"))
                     flash[:message] = "Please select either Consumer or Librarian as a usertype. Not both."
                       redirect '/signup'
                     #make sure username, email and password arent blank
-                  elsif params[:username]=="" || params[:email]=="" || params[:password]==""
+                  elsif params[:user][:username]=="" || params[:user][:email]=="" || params[:user][:password]==""
                     flash[:message] = "Please do not leave username/email/password empty."
                       redirect '/signup'
                     #if the consumer was checked
                   elsif params.has_key?("consumer")
                         #error if the user already exists
-                        if !!Consumer.find_by(username: params[:username])
+                        if !!Consumer.find_by(username: params[:user][:username])
                                 flash[:message] = "This Consumer username has already been taken. Please makeup a new username."
                                 redirect to '/signup'
                         #if user doesnt exist create Consumer
                         else
-                            @consumer = Consumer.create(username: params[:username], email: params[:email], password: params[:password])
+                            @consumer = Consumer.create(params[:user])
                             session[:consumer_id] = @consumer.id
 #binding.pry
                             erb :'/consumers/onboarding'
@@ -45,12 +45,12 @@ class ApplicationController < HelperController
                     #if librarian was checked
                   elsif params.has_key?("librarian")
                           #see if username exists
-                        if !!Librarian.find_by(username: params[:username])
+                        if !!Librarian.find_by(username: params[:user][:username])
                                 flash[:message] = "This Librarian username has already been taken. Please makeup a new username."
                                 redirect to '/signup'
                         else
                           #if username doesnt exist create Librarian
-                            @librarian = Librarian.create(username: params[:username], email: params[:email], password: params[:password])
+                            @librarian = Librarian.create(params[:user])
                             session[:librarian_id] = @librarian.id
 #binding.pry
                             erb :'/librarians/onboarding'
