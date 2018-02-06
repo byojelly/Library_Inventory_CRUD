@@ -79,26 +79,21 @@ binding.pry
                                 end
             end
             patch '/librarians/:id' do
-binding.pry
+#binding.pry
                       @librarian = Librarian.find_by(id: params[:id])
-                      if params[:name]=="" || params[:age]=="" || params[:start_year]=="" || params[:username]==""  || params[:address]==""  || params[:email]==""
+                      if params[:librarian][:name]=="" || params[:librarian][:age]=="" || params[:librarian][:start_year]=="" || params[:librarian][:username]==""  || params[:librarian][:address]==""  || params[:librarian][:email]==""
                               flash[:message] = "Please do not leave the input sections empty when submiting an edit."
                               redirect "/librarians/#{session[:librarian_id]}/edit"
-                      elsif !is_number?(params[:age]) || !is_number?(params[:start_year])
+                      elsif !is_number?(params[:librarian][:age]) || !is_number?(params[:librarian][:start_year])
                               flash[:message] = "Please make sure that your age and first year of employment is numerical."
                               redirect "/librarians/#{session[:librarian_id]}/edit"
-                      elsif !params.has_key?("library_id")
+                      elsif !params[:librarian].has_key?("library_id")
                             flash[:message] = "Please make sure that you select a library."
                             redirect "/librarians/#{session[:librarian_id]}/edit"
                       else
-                                @librarian.update(name: params[:name],
-                                                  username: params[:username],
-                                                  age: params[:age],
-                                                  start_year: params[:start_year],
-                                                  email: params[:email],
-                                                  library_id: params[:library_id])
+                                @librarian.update(params[:librarian])
                                             #above method can be written  with a neater hash nested under a consumer key in the patch form
-                                @librarian.save
+
                                 flash[:message] = "Successfully updated consumer profile."
                                 redirect("/librarians/#{@librarian.id}")
                       end
