@@ -6,7 +6,7 @@ class ConsumerController < HelperController
 
             post '/consumers/onboarding' do
               @consumer = Consumer.find_by(id: session[:consumer_id])
-  binding.pry
+  #binding.pry
                         if params[:consumer].has_key?("library_id")
                               if params[:consumer][:name]=="" || params[:age]=="" || params[:consumer][:address]==""
                                       flash[:message] = "Please do not leave name/age/address empty during onboarding."
@@ -16,16 +16,10 @@ class ConsumerController < HelperController
                                       erb :'/consumers/onboarding'
                               else
                                 @consumer.update(params[:consumer])
-                        #        @consumer.name = params[:name]
-                        #        @consumer.age = params[:age]
-                        #        @consumer.address = params[:address]
-                        #        @consumer.library_id = params[:library_id]
-#mass asignment utilizes .update
-#name in input becoems consumer[name] for all params for mass assigning
                                 @library = Library.find_by(id: @consumer.library_id)
                                 @library.consumers << @consumer
                                 @consumer.save
-binding.pry
+#binding.pry
                                 redirect "/consumers/#{@consumer.id}"
                               end
                         else
