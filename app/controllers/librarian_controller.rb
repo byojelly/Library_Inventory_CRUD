@@ -21,24 +21,19 @@ binding.pry
 #because this is a post request we dont want to render to a different page (ioe erb "librarians/onboarding")
 #what we ant to do is redirect to where we want to go
                     if params.has_key?("library_id")
-                          if params[:name]=="" || params[:age]=="" || params[:start_year]==""
+                          if params[:librarian][:name]=="" || params[:librarian][:age]=="" || params[:librarian][:start_year]==""
                                   flash[:message] = "Please do not leave name/age/first year empty during onboarding."
                                   erb :'/librarians/onboarding'
-                          elsif !is_number?(params[:age])
+                          elsif !is_number?(params[:librarian][:age])
                                   flash[:message] = "Please make sure that your age is numerical."
                                   erb :'/librarians/onboarding'
 
-                          elsif !is_number?(params[:start_year])
+                          elsif !is_number?(params[:librarian][:start_year])
                                           flash[:message] = "Please make sure that your first year worked input is numerical."
                                           erb :'/librarians/onboarding'
                           else
-                            @librarian.name = params[:name]
-
-                            @librarian.age = params[:age].to_i
-                            @librarian.start_year = params[:start_year]
-                            @librarian.library_id = params[:library_id]
+                            @librarian.update(params[:librarian])
                             @library = Library.find_by(id: @librarian.library_id)
-
                             @library.librarians << @librarian
                             @librarian.save
                             redirect "/librarians/#{@librarian.id}"
