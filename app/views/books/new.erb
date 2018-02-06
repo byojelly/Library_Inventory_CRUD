@@ -7,17 +7,17 @@
       <h1>Create a new book at the branch</h1>
       <form action="/books/new" method="POST">
             <b><label>Book Name:</label></b>
-              <input type="text" name="name" id="name" placeholder="">
+              <input type="text" name="book[name]" id="name" placeholder="">
       <br></br>
               <b><label>Author?</label></b>
-              <input type="text" name="author" id="author" placeholder="">
+              <input type="text" name="book[author]" id="author" placeholder="">
       <br></br>
               <b><label>Pages?</label></b>
-              <input type="text" name="pages" id="pages" placeholder="">
+              <input type="text" name="book[pages]" id="pages" placeholder="">
         <br></br>
 
             <b><label>Availabililty = When a new book is created in the system it is automatically made available?</label></b>
-          
+
       <br></br>
       <b><p>What Library does the book reside:</b> <a href="/libraries/<%=@library.id%>"><%=@library.name%></p>
 
@@ -27,7 +27,7 @@
       <b><p>What Section is this book in?</p></b>
       <% Section.all.each do |section| %>
       <label><%= section.name %></label>
-      <input type="checkbox" name="section_id" value="<%= section.id %>" id="<%= section.name %>" >
+      <input type="checkbox" name="book[section_id]" value="<%= section.id %>" id="<%= section.name %>" >
       <% end %>
 <br></br>
 

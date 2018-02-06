@@ -92,7 +92,6 @@ class ConsumerController < HelperController
             patch '/consumers/:id' do
 
                   @consumer = Consumer.find_by(id: params[:id])
-#  binding.pry
                   @consumer.update(params[:consumer])
 #                  @consumer.save
 
