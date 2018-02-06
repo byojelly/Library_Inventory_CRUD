@@ -90,16 +90,11 @@ class ConsumerController < HelperController
                   end
             end
             patch '/consumers/:id' do
-    #          binding.pry
+
                   @consumer = Consumer.find_by(id: params[:id])
-                  @consumer.update(name: params[:name],
-                                    username: params[:username],
-                                    age: params[:age],
-                                    address: params[:address],
-                                    email: params[:email],
-                                    library_id: params[:library_id])
-                              #above method can be written  with a neater hash nested under a consumer key in the patch form
-                  @consumer.save
+#  binding.pry
+                  @consumer.update(params[:consumer])
+#                  @consumer.save
 
                   flash[:message] = "Successfully updated consumer profile."
                   redirect("/consumers/#{@consumer.id}")
