@@ -30,6 +30,7 @@ Additional Items
     Done
 
 3) Prepare a short video demo (narration helps!) describing how a user would interact with your working application.
+    Done
 
 4) Write a blog post about the project and process.
 

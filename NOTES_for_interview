@@ -32,3 +32,26 @@
 7) Book new erb / - What library does the book reside?.  Unable to show the variable @library.name by itself and to have that variable transfer through the form onto the post request to create the new book
       HOW DO YOU LOCK A FORM INPUT VALUE or pass an instance variable through the form to the post request
 8) Section new workaround possible ,Library controller '/libraries/:id/sections/new', at get request add to the session what the new session id would be, to be viewed in post
+------------------------------------------------------------------------------
+Notes w luisa
+
+9) nest parameter for all resources to enable maaaaass assignment
+      a) consumer_controller - post '/consumers/onboarding'
+      b)
+      c)
+      d)
+      e)
+      f)
+
+10) make all controllers inherit from ApplicationController ie get rid of helper controller
+
+11) GET requests should only get. POST requests should only post.
+      rendering (ie erb: blah blah ) should not be used in post requests, only redirects should be used
+
+OPtional: 12) Make Comsumers and Librarians utilize one User model
+OPtional: 13) Model Validations in sinatra (rails guide on model validations works as well)
+
+14) Blog post on the topic of your choice related to the changes made
+15) Make another appointment
+
+when done setup an appointment with @luisa slack

@@ -109,6 +109,10 @@ class ApplicationController < HelperController
      get '/logout' do
        session.clear
        redirect to "/login"
+
+       #get should only get POST SHOULD ONLY POST
+       #get requests should not be be making changes to the server
+       #google how to change a method with a link, i want to change the logout link to submit a post request to logout post request
      end
 
 end

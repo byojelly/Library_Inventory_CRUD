@@ -18,7 +18,8 @@ class LibrarianController < HelperController
             post '/librarians/onboarding' do
                   @librarian = Librarian.find_by(id: session[:librarian_id])
 #binding.pry
-
+#because this is a post request we dont want to render to a different page (ioe erb "librarians/onboarding")
+#what we ant to do is redirect to where we want to go
                     if params.has_key?("library_id")
                           if params[:name]=="" || params[:age]=="" || params[:start_year]==""
                                   flash[:message] = "Please do not leave name/age/first year empty during onboarding."

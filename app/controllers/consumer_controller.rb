@@ -15,10 +15,13 @@ class ConsumerController < HelperController
                                       flash[:message] = "Please make sure that your age input is numerical."
                                       erb :'/consumers/onboarding'
                               else
+
                                 @consumer.name = params[:name]
                                 @consumer.age = params[:age]
                                 @consumer.address = params[:address]
                                 @consumer.library_id = params[:library_id]
+#mass asignment utilizes .update
+#name in input becoems consumer[name] for all params for mass assigning
                                 @library = Library.find_by(id: @consumer.library_id)
                                 @library.consumers << @consumer
                                 @consumer.save
