@@ -19,7 +19,7 @@ class ApplicationController < HelperController
     end
 
     post '/signup' do
-binding.pry
+#binding.pry
         #lets do some signup validations
                     #make sure, (only 1 user is selected), and that (both buttons arent left blank)
                   if (params.has_key?("consumer") && params.has_key?("librarian")) || (!params.has_key?("consumer") && !params.has_key?("librarian"))
