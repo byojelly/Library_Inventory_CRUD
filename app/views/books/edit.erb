@@ -9,28 +9,28 @@
             <input type="hidden" name="_method" value="PATCH">
 
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" value="<%= @book.name %>">
+            <input type="text" name="book[name]" id="name" value="<%= @book.name %>">
           <br></br>
             <label for="author">author</label>
-            <input type="text" name="author" id="author" value="<%= @book.author %>">
+            <input type="text" name="book[author]" id="author" value="<%= @book.author %>">
           <br></br>
             <label for="pages">pages</label>
-            <input type="text" name="pages" id="pages" value="<%= @book.pages %>">
+            <input type="text" name="book[pages]" id="pages" value="<%= @book.pages %>">
           <br></br>
             <label for="available">available</label>
-            <input type="text" name="available" id="available" value="<%= @book.available %>">
+            <input type="text" name="book[available]" id="available" value="<%= @book.available %>">
           <br></br>
 
             <p><b>What Library is the book at?</b></p>
             <% Library.all.each do |lib| %>
                   <label><%= lib.name %></label>
-                      <input type="checkbox" name="library_id" value="<%= lib.id %>" id="<%= lib.name %>" <%='checked' if @book.library_id == lib.id %>>
+                      <input type="checkbox" name="book[library_id]" value="<%= lib.id %>" id="<%= lib.name %>" <%='checked' if @book.library_id == lib.id %>>
 
             <% end %>
             <p><b>What Section is the book in?</b></p>
             <% Section.all.each do |sec| %>
                   <label><%= sec.name %></label>
-                      <input type="checkbox" name="section_id" value="<%= sec.id %>" id="<%= sec.name %>" <%='checked' if @book.section_id == sec.id %>>
+                      <input type="checkbox" name="book[section_id]" value="<%= sec.id %>" id="<%= sec.name %>" <%='checked' if @book.section_id == sec.id %>>
 
             <% end %>
             <br></br>

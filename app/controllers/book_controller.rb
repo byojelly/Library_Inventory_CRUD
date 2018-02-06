@@ -73,23 +73,17 @@ class BookController < HelperController
 
     patch '/books/:id' do
 #binding.pry
-          if   params[:name]=="" || params[:author]=="" || params[:pages]=="" || params[:available]==""
+          if   params[:book][:name]=="" || params[:book][:author]=="" || params[:book][:pages]=="" || params[:book][:available]==""
                   flash[:message] = "Please do not leave the input sections empty when submiting an edit."
                   redirect "/books/#{params[:id]}/edit"
-          elsif !is_number?(params[:pages])
+          elsif !is_number?(params[:book][:pages])
                   flash[:message] = "Please ensure that the pages input is numerical."
                   redirect "/books/#{params[:id]}/edit"
     #      elsif
-
+#corrcect all redirect pages done so far
           else
                   @book = Book.find_by(id: params[:id])
-                  @book.update( name: params[:name],
-                                author: params[:author],
-                                pages: params[:pages],
-                                available: params[:available],
-                                library_id: params[:library_id],
-                                section_id: params[:section_id])
-                  @book.save
+                  @book.update(params[:book])
                   flash[:message] = "Successfully updated book profile."
                   redirect("/books/#{@book.id}")
           end
