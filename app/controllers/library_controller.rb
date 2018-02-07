@@ -18,12 +18,11 @@ class LibraryController < HelperController
 #not putting a lot of validations to save time
     post  '/libraries/new' do
 #binding.pry
-          if params[:name]=="" || params[:contact_phone]=="" || params[:contact_email]=="" || params[:address_street]=="" || params[:address_city]=="" || params[:address_state]=="" || params[:address_zipcode]=="" || params[:hours_of_operation]==""
+          if params[:library][:name]=="" || params[:library][:contact_phone]=="" || params[:library][:contact_email]=="" || params[:library][:address_street]=="" || params[:library][:address_city]=="" || params[:library][:address_state]=="" || params[:library][:address_zipcode]=="" || params[:library][:hours_of_operation]==""
                   flash[:message] = "Please do not leave input fields empty."
                   redirect '/libraries/new'
           else
-              @library = Library.create(name: params[:name], contact_phone: params[:contact_phone], contact_email: params[:contact_email], address_street: params[:address_street], address_city: params[:address_city], address_state: params[:address_state], address_zipcode: params[:address_zipcode], hours_of_operation: params[:hours_of_operation])
-
+              @library = Library.create(params[:library])
               redirect redirect "/libraries/#{@library.id}"
           end
     end
@@ -96,7 +95,7 @@ class LibraryController < HelperController
                 end
     end
     delete '/libraries/:id' do
-binding.pry
+#binding.pry
 
         @library = Library.delete(params[:id])
         redirect "/"
