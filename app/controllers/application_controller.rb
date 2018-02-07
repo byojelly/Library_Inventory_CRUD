@@ -27,6 +27,24 @@ class ApplicationController < Sinatra::Base
                 def is_number?(string)
                   true if Float(string) rescue false
                 end
+                def librarians_array
+                    @librarians = []
+                    User.all.each do |u|
+                                  if u[:librarian] == true
+                                    @librarians << u
+                                  end
+                    end
+                    @librarians
+                end
+                def consumers_array
+                  @consumers = []
+                  User.all.each do |u|
+                                if u[:librarian] == false
+                                  @consumers << u
+                                end
+                  end
+                  @consumers
+                end
       end
     get '/' do
 binding.pry

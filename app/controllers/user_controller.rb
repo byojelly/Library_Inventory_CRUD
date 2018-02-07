@@ -3,6 +3,18 @@ require 'rack-flash'
 class UserController < ApplicationController
 
     use Rack::Flash
+    get '/librarians' do
+        #          binding.pry
+                  if librarian_logged_in?
+                      @librarians = Librarian.all
+                      @librarian = Librarian.find_by(id: session[:user_id])
+                      erb :"/users/librarians/show_all"
+                  elsif consumer_logged_in?
+                      redirect "/consumers/#{current_user}"
+                  else
+                      redirect "/login"
+                  end
+    end
     post '/users/onboarding' do
           @user = User.find_by(id: session[:user_id])
 #binding.pry
