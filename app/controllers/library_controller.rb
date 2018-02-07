@@ -74,13 +74,12 @@ class LibraryController < HelperController
     patch '/libraries/:id' do
 
             @library = Library.find_by(id: params[:id])
-#binding.pry
-            if params[:name]=="" || params[:contact_phone]=="" || params[:contact_email]=="" || params[:address_street]=="" || params[:address_city]=="" || params[:address_state]=="" || params[:address_zipcode]=="" || params[:hours_of_operation]==""
+binding.pry
+            if params[:library][:name]=="" || params[:library][:contact_phone]=="" || params[:library][:contact_email]=="" || params[:library][:address_street]=="" || params[:library][:address_city]=="" || params[:library][:address_state]=="" || params[:library][:address_zipcode]=="" || params[:library][:hours_of_operation]==""
                   flash[:message] = "Please do not leave input fields empty."
                   redirect "/libraries/#{params[:id]}/edit"
             else
-                @library.update(name: params[:name], contact_phone: params[:contact_phone], contact_email: params[:contact_email], address_street: params[:address_street], address_city: params[:address_city], address_state: params[:address_state], address_zipcode: params[:address_zipcode], hours_of_operation: params[:hours_of_operation])
-                @library.save
+                @library.update(params[:library])
                 flash[:message] = "Successfully updated library profile."
                 redirect   "/libraries/#{@library.id}"
             end

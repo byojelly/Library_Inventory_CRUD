@@ -6,28 +6,28 @@
         <input type="hidden" name="_method" value="PATCH">
 
         <label for="name">Name</label>
-        <input type="text" name="name" id="name" value="<%= @library.name %>">
+        <input type="text" name="library[name]" id="name" value="<%= @library.name %>">
     <br></br>
       <label for="contact_phone">Phone Number</label>
-      <input type="text" name="contact_phone" id="contact_phone" value="<%= @library.contact_phone %>">
+      <input type="text" name="library[contact_phone]" id="contact_phone" value="<%= @library.contact_phone %>">
   <br></br>
       <label for="contact_email">Email</label>
-      <input type="text" name="contact_email" id="contact_email" value="<%= @library.contact_email %>">
+      <input type="text" name="library[contact_email]" id="contact_email" value="<%= @library.contact_email %>">
   <br></br>
       <label for="address_street">Adress Street</label>
-      <input type="text" name="address_street" id="address_street" value="<%= @library.address_street %>">
+      <input type="text" name="library[address_street]" id="address_street" value="<%= @library.address_street %>">
   <br></br>
       <label for="address_city">City</label>
-      <input type="text" name="address_city" id="address_city" value="<%= @library.address_city %>">
+      <input type="text" name="library[address_city]" id="address_city" value="<%= @library.address_city %>">
   <br></br>
       <label for="address_state">State</label>
-      <input type="text" name="address_state" id="address_state" value="<%= @library.address_state %>">
+      <input type="text" name="library[address_state]" id="address_state" value="<%= @library.address_state %>">
   <br></br>
       <label for="address_zipcode">Zipcode</label>
-      <input type="text" name="address_zipcode" id="address_zipcode" value="<%= @library.address_zipcode %>">
+      <input type="text" name="library[address_zipcode]" id="address_zipcode" value="<%= @library.address_zipcode %>">
   <br></br>
       <label for="hours_of_operation">Hours of Operation</label>
-      <input type="text" name="hours_of_operation" id="hours_of_operation" value="<%= @library.hours_of_operation %>">
+      <input type="text" name="library[hours_of_operation]" id="hours_of_operation" value="<%= @library.hours_of_operation %>">
   <br></br>
 
         <input type="submit" value="Save">
