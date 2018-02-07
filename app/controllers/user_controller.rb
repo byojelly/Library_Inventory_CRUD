@@ -63,12 +63,6 @@ binding.pry
                       @library = Library.find_by(id: @librarian.library_id)
 #  binding.pry
                       erb :'/users/librarians/show'
-              #      else
-
-              #          redirect "/librarians/#{session[:user_id]}"
-              #      end
-              # rake db:drop
-
               else
                     redirect "/login"
                     flash[:message] = "Librarians may only view a librarian profile."
@@ -77,19 +71,17 @@ binding.pry
     end
     get '/librarians/:id/edit' do
 #binding.pry
-#librarians cant edit other librarian pages
                         if librarian_logged_in?
                             @librarian = User.find_by(id: params[:id])
                                 if session[:user_id] == @librarian.id
                                     @library = Library.find_by(id: @librarian.library_id)
 #binding.pry
                                     erb :'/users/librarians/edit'
-
                                 else
-                              #if the signed in user does not match the edit page they are trying to get to, they will be redirected to their own show page
-                                redirect "/librarians/#{params[:id]}"
+
+                                redirect "/librarians/#{params[:id]}" #librarians cant edit other librarian pages
                                 end
-                        else #if consumers
+                        else # consumers
                             redirect "/librarians"
                         end
     end

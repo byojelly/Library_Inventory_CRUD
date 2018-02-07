@@ -8,9 +8,7 @@ class ApplicationController < Sinatra::Base
       set :views, 'app/views'
           enable :sessions                    #sets sessions
           set :session_secret, "password_security"
-
     end
-
       helpers do
                 def logged_in?
                     !!session[:user_id]
@@ -52,8 +50,6 @@ class ApplicationController < Sinatra::Base
           session.delete("library_id")  #used to close the section create loop for dynamic routes in post request
           @libraries = Library.all
            erb :homepage
-
-
     end
     get '/signup' do
 #binding.pry
@@ -97,10 +93,7 @@ class ApplicationController < Sinatra::Base
 #binding.pry
                             erb :'/users/librarians/onboarding'
                         end
-
                   end
-
-
      end
      get '/login' do
         if logged_in?
