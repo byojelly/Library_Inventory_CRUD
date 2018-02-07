@@ -24,13 +24,13 @@
             <p><b>What Library is the book at?</b></p>
             <% Library.all.each do |lib| %>
                   <label><%= lib.name %></label>
-                      <input type="checkbox" name="book[library_id]" value="<%= lib.id %>" id="<%= lib.name %>" <%='checked' if @book.library_id == lib.id %>>
+                      <input type="radio" name="book[library_id]" value="<%= lib.id %>" id="<%= lib.name %>" <%='checked' if @book.library_id == lib.id %>>
 
             <% end %>
             <p><b>What Section is the book in?</b></p>
             <% Section.all.each do |sec| %>
                   <label><%= sec.name %></label>
-                      <input type="checkbox" name="book[section_id]" value="<%= sec.id %>" id="<%= sec.name %>" <%='checked' if @book.section_id == sec.id %>>
+                      <input type="radio" name="book[section_id]" value="<%= sec.id %>" id="<%= sec.name %>" <%='checked' if @book.section_id == sec.id %>>
 
             <% end %>
             <br></br>

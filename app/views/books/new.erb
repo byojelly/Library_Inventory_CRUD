@@ -27,7 +27,7 @@
       <b><p>What Section is this book in?</p></b>
       <% Section.all.each do |section| %>
       <label><%= section.name %></label>
-      <input type="checkbox" name="book[section_id]" value="<%= section.id %>" id="<%= section.name %>" >
+      <input type="radio" name="book[section_id]" value="<%= section.id %>" id="<%= section.name %>" >
       <% end %>
 <br></br>
 
