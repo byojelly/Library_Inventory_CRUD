@@ -1,8 +1,10 @@
 Library.destroy_all
-Librarian.destroy_all
+#Librarian.destroy_all
+#Consumer.destroy_all
+User.destroy_all
 Section.destroy_all
 Book.destroy_all
-Consumer.destroy_all
+
 #not creating the has many through has many table at the moment
 Library.create!([{
                     name: "West Springfield", contact_phone: "(900) 999 - 9999", contact_email: "wsibrary@email.com", address_street: "west main st", address_city: "Springfield", address_state:"MA", address_zipcode: "12121", hours_of_operation: "M-F 9am-5pm"
@@ -13,7 +15,8 @@ Library.create!([{
                   {
                     name: "North Springfield", contact_phone: "(900) 111 - 1111", contact_email: "nsibrary@email.com", address_street: "north main st", address_city: "Springfield", address_state:"MA", address_zipcode: "12121", hours_of_operation: "M-F 9am-5pm"
                   }])
-  Librarian.create!([{
+#librarian seeding
+  User.create!([{
                     name: "Edna Krabappel", username: "krabapple", password: "pass", age: 25, start_year: 1990, library_id: 1, email: "librarian1@email.com"
                   },
                   {
@@ -49,24 +52,24 @@ Library.create!([{
                   {
                     name: "Non Fiction", location: "Front Desk", library_id: 3
                   }])
-Consumer.create!([{
-                    name: "Charles Montgomery Burns", username: "Mr. Burns", password: "excellent", age: 80, address: "1 Main St Springfield", email: "consumer1@email.com", library_id: 1
+#consumer seeding
+User.create!([{
+                    name: "Charles Montgomery Burns", username: "Mr. Burns", password: "excellent", age: 80, address: "1 Main St Springfield", email: "consumer1@email.com", library_id: 1, librarian: false
                   },
                   {
-
-                    name: "Clarence Clancy Wiggum", username: "Chief_Wiggums", password: "donut", age: 28, address: "Springfield", email: "chief@email.com", library_id: 3
+                    name: "Clarence Clancy Wiggum", username: "Chief_Wiggums", password: "donut", age: 28, address: "Springfield", email: "chief@email.com", library_id: 3, librarian: false
                   },
                   {
-                      name: "Waylon J. Smithers Jr", username: "smithers", password: "yesmrburns", age: 40, address: "Springfield", email: "smithers@email.com", library_id: 2
+                      name: "Waylon J. Smithers Jr", username: "smithers", password: "yesmrburns", age: 40, address: "Springfield", email: "smithers@email.com", library_id: 2, librarian: false
                   },
                   {
-                    name: "Apu Nahasapeemapetilon", username: "kwike", password: "comeagain", age: 40, address: "Springfield", email: "apu@email.com", library_id: 1
+                    name: "Apu Nahasapeemapetilon", username: "kwike", password: "comeagain", age: 40, address: "Springfield", email: "apu@email.com", library_id: 1, librarian: false
                   },
                   {
-                    name: "Herschel Shmoikel Pinchas Yerucham Krustofsky", username: "Krusty", password: "clown", age: 40, address: "Springfield", email: "krusty@email.com", library_id: 3
+                    name: "Herschel Shmoikel Pinchas Yerucham Krustofsky", username: "Krusty", password: "clown", age: 40, address: "Springfield", email: "krusty@email.com", library_id: 3, librarian: false
                   },
                   {
-                    name: "Moe Szyslak", username: "Moe", password: "barneyno", age: 40, address: "Moes Tavern", email: "more@email.com", library_id: 2
+                    name: "Moe Szyslak", username: "Moe", password: "barneyno", age: 40, address: "Moes Tavern", email: "more@email.com", library_id: 2, librarian: false
                   }])
 Book.create!([{
                   name: "Birth of a Town: Springfield Elementary School", author: "Principal Skinner", pages: 100, available: "y", library_id: 1, section_id: 3

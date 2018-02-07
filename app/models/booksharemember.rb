@@ -1,5 +1,5 @@
 class Booksharemember < ActiveRecord::Base
-  belongs_to :consumer
+  belongs_to :user
   belongs_to :library
 
 end

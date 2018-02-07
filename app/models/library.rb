@@ -1,7 +1,7 @@
 class Library < ActiveRecord::Base
   has_many :books
   has_many :sections
-  has_many :librarians
+  #has many 2 has many through join table
   has_many :booksharemembers
-  has_many :consumers, through: :booksharemembers
+  has_many :users, through: :booksharemembers
 end

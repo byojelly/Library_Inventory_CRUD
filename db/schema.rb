@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122040733) do
+ActiveRecord::Schema.define(version: 20180207133353) do
 
   create_table "books", force: :cascade do |t|
     t.string "name"
@@ -22,28 +22,8 @@ ActiveRecord::Schema.define(version: 20180122040733) do
   end
 
   create_table "booksharemembers", force: :cascade do |t|
-    t.integer "consumer_id"
+    t.integer "user_id"
     t.integer "library_id"
-  end
-
-  create_table "consumers", force: :cascade do |t|
-    t.string "name"
-    t.string "username"
-    t.string "password_digest"
-    t.integer "age"
-    t.string "address"
-    t.string "email"
-    t.integer "library_id"
-  end
-
-  create_table "librarians", force: :cascade do |t|
-    t.string "name"
-    t.string "username"
-    t.string "password_digest"
-    t.integer "age"
-    t.integer "start_year"
-    t.integer "library_id"
-    t.string "email"
   end
 
   create_table "libraries", force: :cascade do |t|
@@ -61,6 +41,18 @@ ActiveRecord::Schema.define(version: 20180122040733) do
     t.string "name"
     t.string "location"
     t.integer "library_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "username"
+    t.string "password_digest"
+    t.integer "age"
+    t.integer "start_year"
+    t.integer "library_id"
+    t.string "email"
+    t.string "address"
+    t.boolean "librarian", default: true
   end
 
 end
