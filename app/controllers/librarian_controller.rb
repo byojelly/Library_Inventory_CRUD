@@ -17,7 +17,7 @@ class LibrarianController < ApplicationController
             end
             post '/librarians/onboarding' do
                   @librarian = Librarian.find_by(id: session[:librarian_id])
-binding.pry
+#binding.pry
 #because this is a post request we dont want to render to a different page (ioe erb "librarians/onboarding")
 #what we ant to do is redirect to where we want to go
                     if params.has_key?("library_id")

@@ -24,10 +24,6 @@ class BookController < ApplicationController
               redirect "/login"
 
         end
-
-
-
-
       #  @library = session[:library]
       #  session.delete("library_id")
 #binding.pry
