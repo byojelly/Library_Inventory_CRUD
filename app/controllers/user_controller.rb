@@ -97,4 +97,16 @@ binding.pry
 binding.pry
           end
     end
+    get '/librarians/:id/delete' do
+#    binding.pry
+      @librarian = User.find_by(id: params[:id])
+      erb :"/users/librarians/delete"
+    end
+#single delete action of all users
+    delete '/users/:id' do
+#    binding.pry
+      User.delete(params[:id])
+      session.clear
+      redirect "/"
+    end
 end

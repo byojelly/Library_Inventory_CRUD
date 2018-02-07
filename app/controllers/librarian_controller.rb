@@ -98,16 +98,16 @@ class LibrarianController < ApplicationController
 #                      end
 
   #          end
-            get '/librarians/:id/delete' do
-    #    binding.pry
-              @librarian = Librarian.find_by(id: params[:id])
-              erb :"/librarians/delete"
-            end
+#            get '/librarians/:id/delete' do
+#    #    binding.pry
+#              @librarian = Librarian.find_by(id: params[:id])
+#              erb :"/librarians/delete"
+#            end
 
-            delete '/librarians/:id' do
-    #    binding.pry
-              @librarian = Librarian.delete(params[:id])
-              session.clear
-              redirect "/"
-            end
+#            delete '/librarians/:id' do
+#    #    binding.pry
+#              @librarian = Librarian.delete(params[:id])
+#              session.clear
+#              redirect "/"
+#            end
 end
