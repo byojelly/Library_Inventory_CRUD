@@ -24,6 +24,7 @@ class UserController < ApplicationController
     #in posts you should not render to a page but you should redirect
     #however i am making an exception to onboarding because i do not want there to be an onboarding route, if a user has an issue during the onboaridng process they still have the ability to log into their account and edit their profile with the proper information
             if librarian_logged_in?
+                              @user_librarian = @user
                               if params[:user].has_key?("library_id")
                                   if params[:user][:name]=="" || params[:user][:age]=="" || params[:user][:start_year]==""
                                           flash[:message] = "Please do not leave name/age/first year empty during onboarding."
@@ -54,37 +55,42 @@ binding.pry
             end
     end
     get '/librarians/:id' do
-
+#binding.pry
+#librarians can view other librarian pages not edit
               if librarian_logged_in?
                     @librarian = User.find_by(id: params[:id]) #browser input
-                    if session[:user_id] == @librarian.id      #does logged n user match the profile they want  to look at?
-                            @library = Library.find_by(id: @librarian.library_id)
-#binding.pry
-                            erb :'/users/librarians/show'
-                    else
-                        redirect "/librarians/#{session[:user_id]}"
-                    end
+                    #if session[:user_id] == @librarian.id      #does logged n user match the profile they want  to look at?
+                      @library = Library.find_by(id: @librarian.library_id)
+#  binding.pry
+                      erb :'/users/librarians/show'
+              #      else
+
+              #          redirect "/librarians/#{session[:user_id]}"
+              #      end
+              # rake db:drop
+
               else
                     redirect "/login"
-                    flash[:message] = "Librarians may only view their own personal profile."
+                    flash[:message] = "Librarians may only view a librarian profile."
               end
 
     end
     get '/librarians/:id/edit' do
 #binding.pry
+#librarians cant edit other librarian pages
                         if librarian_logged_in?
                             @librarian = User.find_by(id: params[:id])
-                            if session[:user_id] == @librarian.id
-                                @library = Library.find_by(id: @librarian.library_id)
+                                if session[:user_id] == @librarian.id
+                                    @library = Library.find_by(id: @librarian.library_id)
 #binding.pry
-                                erb :'/users/librarians/edit'
+                                    erb :'/users/librarians/edit'
 
-                            else
+                                else
                               #if the signed in user does not match the edit page they are trying to get to, they will be redirected to their own show page
-                                redirect "/librarians/#{session[:user_id]}"
-                            end
-                        else
-                            redirect "/librarians/#{params[:id]}"
+                                redirect "/librarians/#{params[:id]}"
+                                end
+                        else #if consumers
+                            redirect "/librarians"
                         end
     end
     #patch for all users (consumers and librarians)
@@ -114,14 +120,35 @@ binding.pry
     end
     get '/librarians/:id/delete' do
 #    binding.pry
-      @librarian = User.find_by(id: params[:id])
-      erb :"/users/librarians/delete"
+      if librarian_logged_in?
+              @librarian = User.find_by(id: params[:id])
+              erb :"/users/librarians/delete"
+      else
+          redirect "/librarians"
+      end
+
     end
 #single delete action of all users
     delete '/users/:id' do
-#    binding.pry
-      User.delete(params[:id])
-      session.clear
-      redirect "/"
+binding.pry
+
+          if librarian_logged_in?
+                if current_user == User.find(params[:id]) #if deleting logged in users own account
+                      User.delete(params[:id])
+                      session.clear
+                      redirect "/"
+                else
+                      User.delete(params[:id])
+                      redirect "/librarians"
+                end
+          elsif consumer_logged_in?
+              if current_user == User.find(params[:id]) #consumers can delete their on profile but not others
+                      User.delete(params[:id])
+                      session.clear
+                      redirect "/"
+              else
+                      redirect "/"
+              end
+          end
     end
 end
