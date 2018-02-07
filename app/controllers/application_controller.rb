@@ -13,16 +13,16 @@ class ApplicationController < Sinatra::Base
 
       helpers do
                 def logged_in?
-                    !!session[:consumer_id] || !!session[:librarian_id]
+                    !!session[:user_id]
                 end
                 def consumer_logged_in?
-                    !!session[:consumer_id]
+                    User.find(session[:user_id]).librarian == false
                 end
                 def librarian_logged_in?
-                    !!session[:librarian_id]
+                    User.find(session[:user_id]).librarian == true
                 end
                 def current_user
-                  Librarian.find_by(id: session[:librarian_id]) || Consumer.find_by(id: session[:consumer_id])
+                    User.find(session[:user_id])
                 end
                 def is_number?(string)
                   true if Float(string) rescue false
@@ -43,10 +43,10 @@ class ApplicationController < Sinatra::Base
     end
 
     post '/signup' do
-#binding.pry
+binding.pry
         #lets do some signup validations
-                    #make sure, (only 1 user is selected), and that (both buttons arent left blank)
-                  if (params.has_key?("consumer") && params.has_key?("librarian")) || (!params.has_key?("consumer") && !params.has_key?("librarian"))
+                    #make sure button is not left blank
+                  if !params[:user].has_key?("librarian")
                     flash[:message] = "Please select either Consumer or Librarian as a usertype. Not both."
                       redirect '/signup'
                     #make sure username, email and password arent blank
@@ -54,28 +54,28 @@ class ApplicationController < Sinatra::Base
                     flash[:message] = "Please do not leave username/email/password empty."
                       redirect '/signup'
                     #if the consumer was checked
-                  elsif params.has_key?("consumer")
+                  elsif params[:user][:librarian]=false
                         #error if the user already exists
-                        if !!Consumer.find_by(username: params[:user][:username])
-                                flash[:message] = "This Consumer username has already been taken. Please makeup a new username."
+                        if !!User.find_by(username: params[:user][:username])
+                                flash[:message] = "This username has already been taken. Please makeup a new username (perhaps your email)."
                                 redirect to '/signup'
                         #if user doesnt exist create Consumer
                         else
-                            @consumer = Consumer.create(params[:user])
-                            session[:consumer_id] = @consumer.id
-#binding.pry
+                            @user_consumer = User.create(params[:user])
+                            session[:user_id] = @user_consumer.id
+binding.pry
                             erb :'/consumers/onboarding'
                         end
                     #if librarian was checked
-                  elsif params.has_key?("librarian")
+                  elsif params[:user][:librarian]=true
                           #see if username exists
-                        if !!Librarian.find_by(username: params[:user][:username])
-                                flash[:message] = "This Librarian username has already been taken. Please makeup a new username."
+                        if !!User.find_by(username: params[:user][:username])
+                                flash[:message] = "This username has already been taken. Please makeup a new username (perhaps your email)."
                                 redirect to '/signup'
                         else
                           #if username doesnt exist create Librarian
-                            @librarian = Librarian.create(params[:user])
-                            session[:librarian_id] = @librarian.id
+                            @user_librarian = User.create(params[:user])
+                            session[:user_id] = @user_librarian.id
 #binding.pry
                             erb :'/librarians/onboarding'
                         end
