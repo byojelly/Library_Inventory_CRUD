@@ -72,5 +72,29 @@ binding.pry
                             redirect "/librarians/#{params[:id]}"
                         end
     end
+    #patch for all users (consumers and librarians)
+    patch '/users/:id' do
+          if librarian_logged_in?
+                          @user = User.find_by(id: params[:id])
+#binding.pry
+                          if params[:user][:name]=="" || params[:user][:age]=="" || params[:user][:start_year]=="" || params[:user][:username]==""  || params[:user][:address]==""  || params[:user][:email]==""
+                                  flash[:message] = "Please do not leave the input sections empty when submiting an edit."
+                                  redirect "/librarians/#{session[:user_id]}/edit"
+                          elsif !is_number?(params[:user][:age]) || !is_number?(params[:user][:start_year])
+                                  flash[:message] = "Please make sure that your age and first year of employment is numerical."
+                                  redirect "/librarians/#{session[:user_id]}/edit"
+                          elsif !params[:user].has_key?("library_id")
+                                flash[:message] = "Please make sure that you select a library."
+                                redirect "/librarians/#{session[:user_id]}/edit"
+                          else
+                                    @user.update(params[:user])
+                                                #above method can be written  with a neater hash nested under a consumer key in the patch form
 
+                                    flash[:message] = "Successfully updated consumer profile."
+                                    redirect("/librarians/#{@user.id}")
+                          end
+          elsif consumer_logged_in?
+binding.pry
+          end
+    end
 end

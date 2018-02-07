@@ -78,27 +78,26 @@ class LibrarianController < ApplicationController
 #                                    redirect "/librarians/#{params[:id]}"
 #                                end
 #            end
-            patch '/librarians/:id' do
-#binding.pry
-                      @librarian = Librarian.find_by(id: params[:id])
-                      if params[:librarian][:name]=="" || params[:librarian][:age]=="" || params[:librarian][:start_year]=="" || params[:librarian][:username]==""  || params[:librarian][:address]==""  || params[:librarian][:email]==""
-                              flash[:message] = "Please do not leave the input sections empty when submiting an edit."
-                              redirect "/librarians/#{session[:librarian_id]}/edit"
-                      elsif !is_number?(params[:librarian][:age]) || !is_number?(params[:librarian][:start_year])
-                              flash[:message] = "Please make sure that your age and first year of employment is numerical."
-                              redirect "/librarians/#{session[:librarian_id]}/edit"
-                      elsif !params[:librarian].has_key?("library_id")
-                            flash[:message] = "Please make sure that you select a library."
-                            redirect "/librarians/#{session[:librarian_id]}/edit"
-                      else
-                                @librarian.update(params[:librarian])
-                                            #above method can be written  with a neater hash nested under a consumer key in the patch form
+##binding.pry
+#                      @librarian = Librarian.find_by(id: params[:id])
+#                      if params[:librarian][:name]=="" || params[:librarian][:age]=="" || params[:librarian][:start_year]=="" || params[:librarian][:username]==""  || params[:librarian][:address]==""  || params[:librarian][:email]==""
+#                              flash[:message] = "Please do not leave the input sections empty when submiting an edit."
+#                              redirect "/librarians/#{session[:librarian_id]}/edit"
+#                      elsif !is_number?(params[:librarian][:age]) || !is_number?(params[:librarian][:start_year])
+#                              flash[:message] = "Please make sure that your age and first year of employment is numerical."
+#                              redirect "/librarians/#{session[:librarian_id]}/edit"
+#                      elsif !params[:librarian].has_key?("library_id")
+#                            flash[:message] = "Please make sure that you select a library."
+#                            redirect "/librarians/#{session[:librarian_id]}/edit"
+#                      else
+#                                @librarian.update(params[:librarian])
+#                                            #above method can be written  with a neater hash nested under a consumer key in the patch form
+#
+#                                flash[:message] = "Successfully updated consumer profile."
+#                                redirect("/librarians/#{@librarian.id}")
+#                      end
 
-                                flash[:message] = "Successfully updated consumer profile."
-                                redirect("/librarians/#{@librarian.id}")
-                      end
-
-            end
+  #          end
             get '/librarians/:id/delete' do
     #    binding.pry
               @librarian = Librarian.find_by(id: params[:id])

@@ -1,28 +1,28 @@
 <center>
     <h1>Edit Librarian Page for <%=@librarian.username%></h1>
 
-      <form action="/librarians/<%= @librarian.id %>" method="POST">
+      <form action="/users/<%= @librarian.id %>" method="POST">
         <input type="hidden" name="_method" value="PATCH">
 
         <label for="name">Name</label>
-        <input type="text" name="librarian[name]" id="name" value="<%= @librarian.name %>">
+        <input type="text" name="user[name]" id="name" value="<%= @librarian.name %>">
       <br></br>
         <label for="username">username</label>
-        <input type="text" name="librarian[username]" id="username" value="<%= @librarian.username %>">
+        <input type="text" name="user[username]" id="username" value="<%= @librarian.username %>">
       <br></br>
         <label for="age">age</label>
-        <input type="text" name="librarian[age]" id="age" value="<%= @librarian.age %>">
+        <input type="text" name="user[age]" id="age" value="<%= @librarian.age %>">
       <br></br>
         <label for="address">Employed Since</label>
-        <input type="text" name="librarian[start_year]" id="start_year" value="<%= @librarian.start_year %>">
+        <input type="text" name="user[start_year]" id="start_year" value="<%= @librarian.start_year %>">
       <br></br>
         <label for="email">email</label>
-        <input type="text" name="librarian[email]" id="email" value="<%= @librarian.email %>">
+        <input type="text" name="user[email]" id="email" value="<%= @librarian.email %>">
       <br></br>
         <p>Your Local Library</p>
         <% Library.all.each do |lib| %>
               <label><%= lib.name %></label>
-                  <input type="checkbox" name="librarian[library_id]" value="<%= lib.id %>" id="<%= lib.name %>" <%='checked' if @librarian.library == lib %>>
+                  <input type="radio" name="user[library_id]" value="<%= lib.id %>" id="<%= lib.name %>" <%='checked' if @librarian.library == lib %>>
                   <br></br>
         <% end %>
 
