@@ -74,7 +74,7 @@ class LibraryController < HelperController
     patch '/libraries/:id' do
 
             @library = Library.find_by(id: params[:id])
-binding.pry
+#binding.pry
             if params[:library][:name]=="" || params[:library][:contact_phone]=="" || params[:library][:contact_email]=="" || params[:library][:address_street]=="" || params[:library][:address_city]=="" || params[:library][:address_state]=="" || params[:library][:address_zipcode]=="" || params[:library][:hours_of_operation]==""
                   flash[:message] = "Please do not leave input fields empty."
                   redirect "/libraries/#{params[:id]}/edit"
