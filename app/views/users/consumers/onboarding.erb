@@ -2,10 +2,10 @@
 
 
 
-    <h1>Congratulations <%=@consumer.username%> for becoming a Consumer of the NJ library system.</h1>
+    <h1>Congratulations <%=@user_consumer.username%> for becoming a Consumer of the NJ library system.</h1>
     <p>We just have a few more questions to get you fully onboarded.<p>
 
-      <form action="/consumers/onboarding" method="POST">
+      <form action="/users/onboarding" method="POST">
 
                <label>What is your full name?</label>
                   <input type="text" name="consumer[name]" id="name" placeholder="">
@@ -25,7 +25,7 @@
                 <p>What Libraries do you belong to?</p>
                 <% Library.all.each do |library| %>
                 <label><%= library.name %></label>
-                <input type="checkbox" name="consumer[library_id]" value="<%= library.id %>" id="<%= library.name %>" <%='checked' if @consumer.libraries.include?(library) %>>
+                <input type="checkbox" name="consumer[library_id]" value="<%= library.id %>" id="<%= library.name %>" <%='checked' if @user_consumer.libraries.include?(library) %>>
                 <% end %>
                 <br></br>
                 <input type="submit" name="submit" value="submit">

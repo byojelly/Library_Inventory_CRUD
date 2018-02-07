@@ -2,30 +2,30 @@
 
 <center>
 
-    <h1>Congratulations <%=@librarian.username%> for becoming a Librarian of the NJ library system.</h1>
+    <h1>Congratulations <%=@user_librarian.username%> for becoming a Librarian of the NJ library system.</h1>
     <p>We just have a few more questions to get you fully onboarded.<p>
 
-      <form action="/librarians/onboarding" method="POST">
+      <form action="/users/onboarding" method="POST">
 
                <label>What is your full name?</label>
-                  <input type="text" name="librarian[name]" id="name" placeholder="">
+                  <input type="text" name="user[name]" id="name" placeholder="">
 
               <br></br>
 
               <label>What is your age?</label>
-                  <input type="text" name="librarian[age]" id="age" placeholder="">
+                  <input type="text" name="user[age]" id="age" placeholder="">
 
               <br></br>
 
               <label>What year did you start working with us?</label>
-              <input type="text" name="librarian[start_year]" id="start_year" placeholder="">
+              <input type="text" name="user[start_year]" id="start_year" placeholder="">
 
               <br></br>
 
                 <p>What Libraries do you belong to?</p>
                 <% Library.all.each do |library| %>
                 <label><%= library.name %></label>
-                <input type="checkbox" name="librarian[library_id]" value="<%= library.id %>" id="<%= library.name %>" <%='checked' if @librarian.library == library %>>
+                <input type="checkbox" name="user[library_id]" value="<%= library.id %>" id="<%= library.name %>" <%='checked' if @user_librarian.library == library %>>
                 <% end %>
                 <br></br>
                 <input type="submit" name="submit" value="submit">

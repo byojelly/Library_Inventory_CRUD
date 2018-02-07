@@ -64,7 +64,7 @@ class ApplicationController < Sinatra::Base
                             @user_consumer = User.create(params[:user])
                             session[:user_id] = @user_consumer.id
 #binding.pry
-                            erb :'/consumers/onboarding'
+                            erb :'/users/consumers/onboarding'
                         end
                     #if librarian was checked
                   elsif params[:user][:librarian]=true
@@ -77,7 +77,7 @@ class ApplicationController < Sinatra::Base
                             @user_librarian = User.create(params[:user])
                             session[:user_id] = @user_librarian.id
 #binding.pry
-                            erb :'/librarians/onboarding'
+                            erb :'/users/librarians/onboarding'
                         end
 
                   end
