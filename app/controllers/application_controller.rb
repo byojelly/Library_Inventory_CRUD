@@ -43,7 +43,7 @@ class ApplicationController < Sinatra::Base
     end
 
     post '/signup' do
-binding.pry
+#binding.pry
         #lets do some signup validations
                     #make sure button is not left blank
                   if !params[:user].has_key?("librarian")
@@ -63,7 +63,7 @@ binding.pry
                         else
                             @user_consumer = User.create(params[:user])
                             session[:user_id] = @user_consumer.id
-binding.pry
+#binding.pry
                             erb :'/consumers/onboarding'
                         end
                     #if librarian was checked
