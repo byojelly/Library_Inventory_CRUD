@@ -12,30 +12,47 @@ class UserController < ApplicationController
                               if params[:user].has_key?("library_id")
                                   if params[:user][:name]=="" || params[:user][:age]=="" || params[:user][:start_year]==""
                                           flash[:message] = "Please do not leave name/age/first year empty during onboarding."
-                                          erb :'/librarians/onboarding' #ok to keep in views distinguish user profiles
+                                          erb :'/users/librarians/onboarding' #ok to keep in views distinguish user profiles
                                   elsif !is_number?(params[:user][:age])
                                           flash[:message] = "Please make sure that your age is numerical."
-                                          erb :'/librarians/onboarding'
+                                          erb :'/users/librarians/onboarding'
 
                                   elsif !is_number?(params[:user][:start_year])
                                                   flash[:message] = "Please make sure that your first year worked input is numerical."
-                                                  erb :'/librarians/onboarding'
+                                                  erb :'/users/librarians/onboarding'
                                   else
                                     @user.update(params[:user])
                                     @library = Library.find_by(id: @user.library_id)
                                     @library.users << @user
                                     @user.save
                 #binding.pry
-                                    redirect "/librarians/#{@librarian.id}"
+                                    redirect "/librarians/#{@user.id}"
                                     #keep this route to librarians but nest in user controller
                                   end
 
                             else
                                     flash[:message] = "Please try again. You must select a local library during the onboarding."
-                                      erb :'/librarians/onboarding'
+                                      erb :'/users/librarians/onboarding'
                             end
             elsif consumer_logged_in?
 binding.pry
             end
     end
+    get '/librarians/:id' do
+binding.pry
+              if librarian_logged_in?
+                    @librarian = User.find_by(id: params[:id]) #browser input
+                    if session[:user_id] == @librarian.id      #does logged n user match the profile they want  to look at?
+                            @library = Library.find_by(id: @librarian.library_id)
+                            erb :'/users/librarians/show'
+                    else
+                        redirect "/librarians/#{session[:user_id]}"
+                    end
+              else
+                    redirect "/login"
+                    flash[:message] = "Librarians may only view their own personal profile."
+              end
+
+    end
+
 end

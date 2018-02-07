@@ -45,22 +45,22 @@ class LibrarianController < ApplicationController
 #                    end
 #            end
 
-            get '/librarians/:id' do
-#binding.pry
-                      if librarian_logged_in?
-                            @librarian = Librarian.find_by(id: params[:id]) #browser input
-                            if session[:librarian_id] == @librarian.id      #does logged n user match the profile they want  to look at?
-                                    @library = Library.find_by(id: @librarian.library_id)
-                                    erb :'/librarians/show'
-                            else
-                                redirect "/librarians/#{session[:librarian_id]}"
-                            end
-                      else
-                            redirect "/login"
-                            flash[:message] = "Librarians may only view their own personal profile."
-                      end
-
-            end
+#            get '/librarians/:id' do
+##binding.pry
+#                      if librarian_logged_in?
+#                            @librarian = Librarian.find_by(id: params[:id]) #browser input
+#                            if session[:librarian_id] == @librarian.id      #does logged n user match the profile they want  to look at?
+#                                    @library = Library.find_by(id: @librarian.library_id)
+#                                    erb :'/librarians/show'
+#                            else
+#                                redirect "/librarians/#{session[:librarian_id]}"
+#                            end
+#                      else
+#                            redirect "/login"
+#                            flash[:message] = "Librarians may only view their own personal profile."
+#                      end
+#
+#            end
             get '/librarians/:id/edit' do
             #  binding.pry
                                 if librarian_logged_in?
