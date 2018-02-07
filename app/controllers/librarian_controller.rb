@@ -61,23 +61,23 @@ class LibrarianController < ApplicationController
 #                      end
 #
 #            end
-            get '/librarians/:id/edit' do
-            #  binding.pry
-                                if librarian_logged_in?
-                                    @librarian = Librarian.find_by(id: params[:id])
-                                    if session[:librarian_id] == @librarian.id
-                                        @library = Library.find_by(id: @librarian.library_id)
-              #binding.pry
-                                        erb :'/librarians/edit'
-
-                                    else
-                                      #if the signed in user does not match the edit page they are trying to get to, they will be redirected to their own show page
-                                        redirect "/librarians/#{session[:librarian_id]}"
-                                    end
-                                else
-                                    redirect "/librarians/#{params[:id]}"
-                                end
-            end
+#            get '/librarians/:id/edit' do
+#            #  binding.pry
+#                                if librarian_logged_in?
+#                                    @librarian = Librarian.find_by(id: params[:id])
+#                                    if session[:librarian_id] == @librarian.id
+#                                        @library = Library.find_by(id: @librarian.library_id)
+#              #binding.pry
+#                                        erb :'/librarians/edit'
+#
+#                                    else
+#                                      #if the signed in user does not match the edit page they are trying to get to, they will be redirected to their own show page
+#                                        redirect "/librarians/#{session[:librarian_id]}"
+#                                    end
+#                                else
+#                                    redirect "/librarians/#{params[:id]}"
+#                                end
+#            end
             patch '/librarians/:id' do
 #binding.pry
                       @librarian = Librarian.find_by(id: params[:id])

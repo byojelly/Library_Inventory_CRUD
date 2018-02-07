@@ -39,11 +39,12 @@ binding.pry
             end
     end
     get '/librarians/:id' do
-binding.pry
+
               if librarian_logged_in?
                     @librarian = User.find_by(id: params[:id]) #browser input
                     if session[:user_id] == @librarian.id      #does logged n user match the profile they want  to look at?
                             @library = Library.find_by(id: @librarian.library_id)
+#binding.pry
                             erb :'/users/librarians/show'
                     else
                         redirect "/librarians/#{session[:user_id]}"
@@ -53,6 +54,23 @@ binding.pry
                     flash[:message] = "Librarians may only view their own personal profile."
               end
 
+    end
+    get '/librarians/:id/edit' do
+#binding.pry
+                        if librarian_logged_in?
+                            @librarian = Librarian.find_by(id: params[:id])
+                            if session[:librarian_id] == @librarian.id
+                                @library = Library.find_by(id: @librarian.library_id)
+#binding.pry
+                                erb :'/librarians/edit'
+
+                            else
+                              #if the signed in user does not match the edit page they are trying to get to, they will be redirected to their own show page
+                                redirect "/librarians/#{session[:librarian_id]}"
+                            end
+                        else
+                            redirect "/librarians/#{params[:id]}"
+                        end
     end
 
 end
