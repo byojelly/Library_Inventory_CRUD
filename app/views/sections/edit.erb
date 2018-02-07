@@ -7,10 +7,10 @@
                 <input type="hidden" name="_method" value="PATCH">
 
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" value="<%= @section.name %>">
+                <input type="text" name="section[name]" id="name" value="<%= @section.name %>">
               <br></br>
                 <label for="location">location</label>
-                <input type="text" name="location" id="location" value="<%= @section.location %>">
+                <input type="text" name="section[location]" id="location" value="<%= @section.location %>">
               <br></br>
                 <input type="submit" value="Save">
               </form>

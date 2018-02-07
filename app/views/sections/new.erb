@@ -7,10 +7,10 @@
       <h1>Create a new section at the <%=@library.name%> branch</h1>
       <form action="/sections/new" method="POST">
             <b><label>Section Name:</label></b>
-              <input type="text" name="name" id="name" placeholder="">
+              <input type="text" name="section[name]" id="name" placeholder="">
       <br></br>
               <b><label>Location in the library?</label></b>
-              <input type="text" name="location" id="location" placeholder="">
+              <input type="text" name="section[location]" id="location" placeholder="">
       <% @library_id = @library.id%>
 
 
