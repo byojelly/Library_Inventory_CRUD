@@ -8,11 +8,10 @@
       <form action="/signup" method="POST">
               <b><p>User Type:</p></b>
               <ul><label>Consumer</label>
-                  <input type="checkbox" name="consumer" id="consumer">
+                  <input type="radio" name="user[librarian]" id="consumer" value=false>
               <label>Librarian</label>
-                  <input type="checkbox" name="librarian" id="librarian">
+                  <input type="radio" name="user[librarian]" id="librarian" value=true>
               </ul>
-
 
               <b><label>New Username:</label></b>
               <input type="text" name="user[username]" id="username" placeholder="">
