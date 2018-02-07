@@ -1,20 +1,20 @@
-require './config/environment'
-require 'rack-flash'
-class LibrarianController < ApplicationController
-
-    use Rack::Flash
-            get '/librarians' do
-    #          binding.pry
-              if librarian_logged_in?
-                  @librarians = Librarian.all
-                  @librarian = Librarian.find_by(id: session[:librarian_id])
-                  erb :"/librarians/show_all"
-              elsif consumer_logged_in?
-                  redirect "/consumers/#{@consumer.id}"
-              else
-                  redirect "/login"
-              end
-            end
+#require './config/environment'
+#require 'rack-flash'
+#class LibrarianController < ApplicationController
+#
+#    use Rack::Flash
+#            get '/librarians' do
+#    #          binding.pry
+#              if librarian_logged_in?
+#                  @librarians = Librarian.all
+#                  @librarian = Librarian.find_by(id: session[:librarian_id])
+#                  erb :"/librarians/show_all"
+#              elsif consumer_logged_in?
+#                  redirect "/consumers/#{@consumer.id}"
+#              else
+#                  redirect "/login"
+#              end
+#            end
 #            post '/librarians/onboarding' do
 #                  @librarian = Librarian.find_by(id: session[:librarian_id])
 ##binding.pry
@@ -110,4 +110,4 @@ class LibrarianController < ApplicationController
 #              session.clear
 #              redirect "/"
 #            end
-end
+#end
