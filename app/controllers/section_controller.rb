@@ -1,6 +1,6 @@
 require './config/environment'
 require 'rack-flash'
-class SectionController < HelperController
+class SectionController < ApplicationController
 
     use Rack::Flash
 

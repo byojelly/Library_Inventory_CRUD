@@ -35,13 +35,24 @@
 ------------------------------------------------------------------------------
 Notes w luisa
 
-9) nest parameter for all resources to enable maaaaass assignment
-      a) consumer_controller - post '/consumers/onboarding'
-      b)
-      c)
-      d)
-      e)
-      f)
+9) XXXX nest parameter for all resources to enable maaaaass assignment
+        updated controllers and views for
+            consumers
+            	     onboarding
+                  	edit
+                    signup - application controller for consumers and librarians
+            Librarians
+                  	onboarding
+                  	edit
+            Books
+                  	new
+                  	edit
+            Library
+                  	new
+                  	edit
+            Section
+                  	new
+                  	edit
 
 10) make all controllers inherit from ApplicationController ie get rid of helper controller
 

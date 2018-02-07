@@ -1,6 +1,6 @@
 require './config/environment'
 require 'rack-flash'
-class ConsumerController < HelperController
+class ConsumerController < ApplicationController
 
     use Rack::Flash
 

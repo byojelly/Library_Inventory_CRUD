@@ -1,6 +1,6 @@
 require './config/environment'
 require 'rack-flash'
-class LibrarianController < HelperController
+class LibrarianController < ApplicationController
 
     use Rack::Flash
             get '/librarians' do

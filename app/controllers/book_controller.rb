@@ -1,6 +1,6 @@
 require './config/environment'
 require 'rack-flash'
-class BookController < HelperController
+class BookController < ApplicationController
 
     use Rack::Flash
 
