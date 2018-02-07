@@ -58,15 +58,15 @@ binding.pry
     get '/librarians/:id/edit' do
 #binding.pry
                         if librarian_logged_in?
-                            @librarian = Librarian.find_by(id: params[:id])
-                            if session[:librarian_id] == @librarian.id
+                            @librarian = User.find_by(id: params[:id])
+                            if session[:user_id] == @librarian.id
                                 @library = Library.find_by(id: @librarian.library_id)
 #binding.pry
-                                erb :'/librarians/edit'
+                                erb :'/users/librarians/edit'
 
                             else
                               #if the signed in user does not match the edit page they are trying to get to, they will be redirected to their own show page
-                                redirect "/librarians/#{session[:librarian_id]}"
+                                redirect "/librarians/#{session[:user_id]}"
                             end
                         else
                             redirect "/librarians/#{params[:id]}"
