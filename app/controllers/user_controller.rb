@@ -11,12 +11,12 @@ class UserController < ApplicationController
                   if librarian_logged_in?
                       @librarians = librarians_array
                       @librarian = User.find_by(id: session[:user_id])
-binding.pry
+#binding.pry
                       erb :"/users/librarians/show_all"
                   elsif consumer_logged_in?
                       redirect "/consumers/#{current_user}"
                   end
-        end          
+        end
     end
     post '/users/onboarding' do
           @user = User.find_by(id: session[:user_id])
