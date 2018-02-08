@@ -4,29 +4,29 @@ class ConsumerController < ApplicationController
 
     use Rack::Flash
 
-            post '/consumers/onboarding' do
-              @consumer = Consumer.find_by(id: session[:consumer_id])
-  #binding.pry
-                        if params[:consumer].has_key?("library_id")
-                              if params[:consumer][:name]=="" || params[:age]=="" || params[:consumer][:address]==""
-                                      flash[:message] = "Please do not leave name/age/address empty during onboarding."
-                                      erb :'/consumers/onboarding'
-                              elsif !is_number?(params[:consumer][:age])  #helper method
-                                      flash[:message] = "Please make sure that your age input is numerical."
-                                      erb :'/consumers/onboarding'
-                              else
-                                @consumer.update(params[:consumer])
-                                @library = Library.find_by(id: @consumer.library_id)
-                                @library.consumers << @consumer
-                                @consumer.save
-#binding.pry
-                                redirect "/consumers/#{@consumer.id}"
-                              end
-                        else
-                        flash[:message] = "Please try again. You must select a local library during the onboarding."
-                          erb :'/consumers/onboarding'
-                        end
-            end
+  #          post '/consumers/onboarding' do
+  #            @consumer = Consumer.find_by(id: session[:consumer_id])
+  ##binding.pry
+  #                      if params[:consumer].has_key?("library_id")
+  #                            if params[:consumer][:name]=="" || params[:age]=="" || params[:consumer][:address]==""
+  #                                    flash[:message] = "Please do not leave name/age/address empty during onboarding."
+  #                                    erb :'/consumers/onboarding'
+  #                            elsif !is_number?(params[:consumer][:age])  #helper method
+  #                                    flash[:message] = "Please make sure that your age input is numerical."
+  #                                    erb :'/consumers/onboarding'
+  #                            else
+  #                              @consumer.update(params[:consumer])
+  #                              @library = Library.find_by(id: @consumer.library_id)
+  #                              @library.consumers << @consumer
+  #                              @consumer.save
+#b#inding.pry
+  #                              redirect "/consumers/#{@consumer.id}"
+  #                            end
+  #                      else
+  #                      flash[:message] = "Please try again. You must select a local library during the onboarding."
+  #                        erb :'/consumers/onboarding'
+  #                      end
+  #          end
             get '/consumers' do
 #binding.pry
                       if librarian_logged_in?

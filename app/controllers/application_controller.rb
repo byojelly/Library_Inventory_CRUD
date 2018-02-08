@@ -53,7 +53,17 @@ class ApplicationController < Sinatra::Base
     end
     get '/signup' do
 #binding.pry
-        erb :signup
+
+        if logged_in?
+              if consumer_logged_in?
+                redirect "/consumers/#{session[:user_id]}"
+              else
+              #  binding.pry
+                  redirect "/librarians/#{session[:user_id]}"
+              end
+        else
+              erb :signup
+        end
     end
 
     post '/signup' do
