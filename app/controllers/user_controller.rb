@@ -18,6 +18,20 @@ class UserController < ApplicationController
                   end
         end
     end
+    get '/consumers' do
+#binding.pry
+        if !logged_in?
+            redirect "/login"
+        else
+              if librarian_logged_in?
+                  @consumers = consumers_array
+                  @librarian = User.find_by(id: session[:user_id])
+                  erb :"/users/consumers/show_all"
+                elsif consumer_logged_in?
+                    redirect "/consumers/#{current_user.id}"
+                end
+        end
+    end
 
     post '/users/onboarding' do
           @user = User.find_by(id: session[:user_id])

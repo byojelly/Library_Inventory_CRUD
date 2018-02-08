@@ -27,22 +27,22 @@ class ConsumerController < ApplicationController
   #                        erb :'/consumers/onboarding'
   #                      end
   #          end
-            get '/consumers' do
-#binding.pry
-                      if librarian_logged_in?
-                          @consumers = Consumer.all
-                          @librarian = Librarian.find_by(id: session[:librarian_id])
-                          erb :"/consumers/show_all"
-                      elsif consumer_logged_in?
-                          @consumer = Consumer.find_by(id: session[:consumer_id])
-                          redirect "/consumers/#{@consumer.id}"
-                      else
-                          redirect "/login"
-                      end
-        #this is a view for librarians to view all consumers per library.
-        #should recognize a librarian is logged in
-        #if a consumer is logged in it should redirect to /consumers/:id
-            end
+  #          get '/consumers' do
+#b#inding.pry
+  #                    if librarian_logged_in?
+  #                        @consumers = Consumer.all
+  #                        @librarian = Librarian.find_by(id: session[:librarian_id])
+  #                        erb :"/consumers/show_all"
+  #                    elsif consumer_logged_in?
+  #                        @consumer = Consumer.find_by(id: session[:consumer_id])
+  #                        redirect "/consumers/#{@consumer.id}"
+  #                    else
+  #                        redirect "/login"
+  #                    end
+  #      #this is a view for librarians to view all consumers per library.
+  #      #should recognize a librarian is logged in
+  #      #if a consumer is logged in it should redirect to /consumers/:id
+  #          end
 #            get '/consumers/:id' do
 ##binding.pry
 #
