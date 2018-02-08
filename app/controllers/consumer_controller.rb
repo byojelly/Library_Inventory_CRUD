@@ -89,15 +89,15 @@ class ConsumerController < ApplicationController
 #                      redirect "/consumers/#{params[:id]}"
 #                  end
 #            end
-            patch '/consumers/:id' do
-
-                  @consumer = Consumer.find_by(id: params[:id])
-                  @consumer.update(params[:consumer])
-#                  @consumer.save
-
-                  flash[:message] = "Successfully updated consumer profile."
-                  redirect("/consumers/#{@consumer.id}")
-            end
+#            patch '/consumers/:id' do
+#
+#                  @consumer = Consumer.find_by(id: params[:id])
+#                  @consumer.update(params[:consumer])
+##                  @consumer.save
+#
+#                  flash[:message] = "Successfully updated consumer profile."
+#                  redirect("/consumers/#{@consumer.id}")
+#            end
             get '/consumers/:id/delete' do
   #      binding.pry
                     if consumer_logged_in? && params[:id].to_i == session[:consumer_id]
