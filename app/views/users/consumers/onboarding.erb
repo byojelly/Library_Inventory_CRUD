@@ -8,24 +8,24 @@
       <form action="/users/onboarding" method="POST">
 
                <label>What is your full name?</label>
-                  <input type="text" name="consumer[name]" id="name" placeholder="">
+                  <input type="text" name="user[name]" id="name" placeholder="">
 
               <br></br>
 
               <label>What is your age?</label>
-                  <input type="text" name="consumer[age]" id="age" placeholder="">
+                  <input type="text" name="user[age]" id="age" placeholder="">
 
               <br></br>
 
               <label>What is your full address?</label>
-              <input type="text" name="consumer[address]" id="address" placeholder="">
+              <input type="text" name="user[address]" id="address" placeholder="">
 
               <br></br>
 
                 <p>What Libraries do you belong to?</p>
                 <% Library.all.each do |library| %>
                 <label><%= library.name %></label>
-                <input type="radio" name="consumer[library_id]" value="<%= library.id %>" id="<%= library.name %>" <%='checked' if @user_consumer.libraries.include?(library) %>>
+                <input type="radio" name="user[library_id]" value="<%= library.id %>" id="<%= library.name %>" <%='checked' if @user_consumer.libraries.include?(library) %>>
                 <% end %>
                 <br></br>
                 <input type="submit" name="submit" value="submit">

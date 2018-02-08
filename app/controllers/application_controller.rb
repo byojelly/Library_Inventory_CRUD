@@ -52,7 +52,7 @@ class ApplicationController < Sinatra::Base
            erb :homepage
     end
     get '/signup' do
-binding.pry
+#binding.pry
 
         if logged_in?
               if consumer_logged_in?
@@ -67,7 +67,7 @@ binding.pry
     end
 
     post '/signup' do
-binding.pry
+#binding.pry
         #lets do some signup validations
                     #make sure button is not left blank
                   if !params[:user].has_key?("librarian")

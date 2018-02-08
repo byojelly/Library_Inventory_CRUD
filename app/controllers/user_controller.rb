@@ -26,53 +26,53 @@ class UserController < ApplicationController
             if librarian_logged_in?
                               @user_librarian = @user
                               if params[:user].has_key?("library_id")
-                                  if params[:user][:name]=="" || params[:user][:age]=="" || params[:user][:start_year]==""
-                                          flash[:message] = "Please do not leave name/age/first year empty during onboarding."
-                                          erb :'/users/librarians/onboarding' #ok to keep in views distinguish user profiles
-                                  elsif !is_number?(params[:user][:age])
-                                          flash[:message] = "Please make sure that your age is numerical."
-                                          erb :'/users/librarians/onboarding'
+                                        if params[:user][:name]=="" || params[:user][:age]=="" || params[:user][:start_year]==""
+                                                flash[:message] = "Please do not leave name/age/first year empty during onboarding."
+                                                erb :'/users/librarians/onboarding' #ok to keep in views distinguish user profiles
+                                        elsif !is_number?(params[:user][:age])
+                                                flash[:message] = "Please make sure that your age is numerical."
+                                                erb :'/users/librarians/onboarding'
 
-                                  elsif !is_number?(params[:user][:start_year])
-                                                  flash[:message] = "Please make sure that your first year worked input is numerical."
-                                                  erb :'/users/librarians/onboarding'
-                                  else
-                                    @user.update(params[:user])
-                                    @library = Library.find_by(id: @user.library_id)
-                                    @library.users << @user
-                                    @user.save
-                #binding.pry
-                                    redirect "/librarians/#{@user.id}"
-                                    #keep this route to librarians but nest in user controller
-                                  end
+                                        elsif !is_number?(params[:user][:start_year])
+                                                        flash[:message] = "Please make sure that your first year worked input is numerical."
+                                                        erb :'/users/librarians/onboarding'
+                                        else
+                                                  @user.update(params[:user])
+                                                  @library = Library.find_by(id: @user.library_id)
+                                                  @library.users << @user
+                                                  @user.save
+                              #binding.pry
+                                                  redirect "/librarians/#{@user.id}"
+                                                  #keep this route to librarians but nest in user controller
+                                        end
 
                             else
-                                    flash[:message] = "Please try again. You must select a local library during the onboarding."
-                                      erb :'/users/librarians/onboarding'
+                                        flash[:message] = "Please try again. You must select a local library during the onboarding."
+                                          erb :'/users/librarians/onboarding'
                             end
             elsif consumer_logged_in?
 binding.pry
-                  #            @user_consumer = Consumer.find_by(id: session[:consumer_id])
+                              @user_consumer = @user
 ##binding.pry#
-                  #            if params[:consumer].has_key?("library_id")
-                  #                  if params[:consumer][:name]=="" || params[:age]=="" || params[:consumer][:address]==""
-                  #                          flash[:message] = "Please do not leave name/age/address empty during onboarding."
-                  #                          erb :'/consumers/onboarding'
-                  #                  elsif !is_number?(params[:consumer][:age])  #helper method
-                  #                          flash[:message] = "Please make sure that your age input is numerical."
-                  #                          erb :'/consumers/onboarding'
-                  #                  else
-                  #                    @consumer.update(params[:consumer])
-                  #                    @library = Library.find_by(id: @consumer.library_id)
-                  #                    @library.consumers << @consumer
-                  #                    @consumer.save
-                  #    #binding.pry
-                  #                    redirect "/consumers/#{@consumer.id}"
-                  #                  end
-                  #            else
-                  #            flash[:message] = "Please try again. You must select a local library during the onboarding."
-                  #              erb :'/consumers/onboarding'
-                  #            end
+                              if params[:user].has_key?("library_id")
+                                    if params[:user][:name]=="" || params[:user][:age]=="" || params[:user][:address]==""
+                                            flash[:message] = "Please do not leave name/age/address empty during onboarding."
+                                            erb :'/users/consumers/onboarding'
+                                    elsif !is_number?(params[:user][:age])  #helper method
+                                            flash[:message] = "Please make sure that your age input is numerical."
+                                            erb :'/users/consumers/onboarding'
+                                    else
+                                      @user.update(params[:user])
+                                      @library = Library.find_by(id: @user.library_id)
+                                      @library.users << @user
+                                      @user.save
+                  #binding.pry
+                                      redirect "/consumers/#{@user.id}"
+                                    end
+                              else
+                              flash[:message] = "Please try again. You must select a local library during the onboarding."
+                                erb :'/users/consumers/onboarding'
+                              end
 
             end
     end

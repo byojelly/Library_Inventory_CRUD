@@ -6,7 +6,7 @@ class ConsumerController < ApplicationController
 
   #          post '/consumers/onboarding' do
   #            @consumer = Consumer.find_by(id: session[:consumer_id])
-  ##binding.pry
+            ##binding.pry
   #                      if params[:consumer].has_key?("library_id")
   #                            if params[:consumer][:name]=="" || params[:age]=="" || params[:consumer][:address]==""
   #                                    flash[:message] = "Please do not leave name/age/address empty during onboarding."
@@ -19,7 +19,7 @@ class ConsumerController < ApplicationController
   #                              @library = Library.find_by(id: @consumer.library_id)
   #                              @library.consumers << @consumer
   #                              @consumer.save
-#b#inding.pry
+            #binding.pry
   #                              redirect "/consumers/#{@consumer.id}"
   #                            end
   #                      else
