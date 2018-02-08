@@ -43,28 +43,28 @@ class ConsumerController < ApplicationController
         #should recognize a librarian is logged in
         #if a consumer is logged in it should redirect to /consumers/:id
             end
-            get '/consumers/:id' do
-#binding.pry
-
-        #librarians can view all consumer account info
-        #consumers cannot see an account unless they are logged in
-        #consumers cannot see account info unless it is their own via session
-                      if librarian_logged_in? #helper
-                                    @consumer = Consumer.find_by(id: params[:id])
-                                    @library = Library.find_by(id: @consumer.library_id)
-                                    erb :'/consumers/show'
-                      elsif consumer_logged_in? #helper
-                            @consumer = Consumer.find_by(id: params[:id]) #browser input
-                            if session[:consumer_id] == @consumer.id      #does logged in user match the profile they want  to look at?
-                                    @library = Library.find_by(id: @consumer.library_id)
-                                    erb :'/consumers/show'
-                            else
-                                redirect "/consumers/#{session[:consumer_id]}"
-                            end
-                      else
-                            redirect "/login"
-                      end
-            end
+#            get '/consumers/:id' do
+##binding.pry
+#
+#        #librarians can view all consumer account info
+#        #consumers cannot see an account unless they are logged in
+#        #consumers cannot see account info unless it is their own via session
+#                      if librarian_logged_in? #helper
+#                                    @consumer = Consumer.find_by(id: params[:id])
+#                                    @library = Library.find_by(id: @consumer.library_id)
+#                                    erb :'/consumers/show'
+#                      elsif consumer_logged_in? #helper
+#                            @consumer = Consumer.find_by(id: params[:id]) #browser input
+#                            if session[:consumer_id] == @consumer.id      #does logged in user match the profile they want  to look at?
+#                                    @library = Library.find_by(id: @consumer.library_id)
+#                                    erb :'/consumers/show'
+#                            else
+#                                redirect "/consumers/#{session[:consumer_id]}"
+#                            end
+#                      else
+#                            redirect "/login"
+#                      end
+#            end
             #only the consumer can edit their own information
             get '/consumers/:id/edit' do
 #binding.pry

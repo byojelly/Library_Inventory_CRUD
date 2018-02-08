@@ -18,6 +18,7 @@ class UserController < ApplicationController
                   end
         end
     end
+
     post '/users/onboarding' do
           @user = User.find_by(id: session[:user_id])
 
@@ -90,6 +91,28 @@ binding.pry
                     flash[:message] = "Librarians may only view a librarian profile."
               end
 
+    end
+    get '/consumers/:id' do
+#binding.pry
+
+#librarians can view all consumer account info
+#consumers cannot see an account unless they are logged in
+#consumers cannot see account info unless it is their own via session
+              if librarian_logged_in? #helper
+                            @consumer = User.find_by(id: params[:id])
+                            @library = Library.find_by(id: @consumer.library_id)
+                            erb :'/users/consumers/show'
+              elsif consumer_logged_in? #helper
+                    @consumer = User.find_by(id: params[:id]) #browser input
+                    if session[:user_id] == @consumer.id      #does logged in user match the profile they want  to look at?
+                            @library = Library.find_by(id: @consumer.library_id)
+                            erb :'/users/consumers/show'
+                    else
+                        redirect "/consumers/#{session[:user_id]}"
+                    end
+              else
+                    redirect "/login"
+              end
     end
     get '/librarians/:id/edit' do
 #binding.pry
