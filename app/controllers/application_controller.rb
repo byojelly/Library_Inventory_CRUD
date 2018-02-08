@@ -104,40 +104,37 @@ class ApplicationController < Sinatra::Base
                   redirect "/librarians/#{session[:librarian_id]}"
               end
         else
-           erb :login
+              erb :login
         end
      end
      post '/login' do
 #binding.pry
-              if   params[:username]=="" ||  params[:password]==""
+              if   params[:user][:username]=="" ||  params[:user][:password]==""
                       flash[:message] = "Please do not leave username/password blank when logging in."
                       redirect to '/login'
               else
-                      if    params.has_key?("consumer") && params.has_key?("librarian")
+                      if    !params[:user].has_key?("librarian")
                                   flash[:message] = "Please select either consumer or librarian id type when logging in."
                                   redirect to '/login'
 
-                      elsif params.has_key?("consumer")
-                              @consumer = Consumer.find_by(username: params[:username])
-                              if @consumer && @consumer.authenticate(params[:password])
-                                session[:consumer_id] = @consumer.id
+                      elsif !!params[:user][:librarian] == false
+                              @consumer = User.find_by(username: params[:user][:username])
+                              if @consumer && @consumer.authenticate(params[:user][:password])
+                                session[:user_id] = @consumer.id
                                 redirect "/consumers/#{@consumer.id}"
                               else
                                 flash[:message] = "Your username/password does not match our records. Please double check and try logging in again."
                                 redirect to '/login'
                               end
-                      elsif params.has_key?("librarian")
-                              @librarian = Librarian.find_by(username: params[:username])
-                              if @librarian && @librarian.authenticate(params[:password])
-                                session[:librarian_id] = @librarian.id
+                      elsif !!params[:user][:librarian] == true
+                              @librarian = User.find_by(username: params[:user][:username])
+                              if @librarian && @librarian.authenticate(params[:user][:password])
+                                session[:user_id] = @librarian.id
                                 redirect "/librarians/#{@librarian.id}"
                               else
                                 flash[:message] = "Your username/password does not match our records. Please double check and try logging in again."
                                 redirect to '/login'
                               end
-                      else
-                                flash[:message] = "Please make sure you select the type of account you have before logging in."
-                                redirect to '/login'
                       end
               end
      end
