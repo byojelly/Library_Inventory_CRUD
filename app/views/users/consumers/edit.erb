@@ -5,24 +5,24 @@
         <input type="hidden" name="_method" value="PATCH">
 
         <label for="name">Name</label>
-        <input type="text" name="consumer[name]" id="name" value="<%= @consumer.name %>">
+        <input type="text" name="user[name]" id="name" value="<%= @consumer.name %>">
       <br></br>
         <label for="username">username</label>
-        <input type="text" name="consumer[username]" id="username" value="<%= @consumer.username %>">
+        <input type="text" name="user[username]" id="username" value="<%= @consumer.username %>">
       <br></br>
         <label for="age">age</label>
-        <input type="text" name="consumer[age]" id="age" value="<%= @consumer.age %>">
+        <input type="text" name="user[age]" id="age" value="<%= @consumer.age %>">
       <br></br>
         <label for="address">address</label>
-        <input type="text" name="consumer[address]" id="address" value="<%= @consumer.address %>">
+        <input type="text" name="user[address]" id="address" value="<%= @consumer.address %>">
       <br></br>
         <label for="email">email</label>
-        <input type="text" name="consumer[email]" id="email" value="<%= @consumer.email %>">
+        <input type="text" name="user[email]" id="email" value="<%= @consumer.email %>">
       <br></br>
         <p>Your Local Library</p>
         <% Library.all.each do |lib| %>
               <label><%= lib.name %></label>
-                  <input type="radio" name="consumer[library_id]" value="<%= lib.id %>" id="<%= lib.name %>" <%='checked' if @consumer.library == lib %>>
+                  <input type="radio" name="user[library_id]" value="<%= lib.id %>" id="<%= lib.name %>" <%='checked' if @consumer.library == lib %>>
                     <br></br>
         <% end %>
 

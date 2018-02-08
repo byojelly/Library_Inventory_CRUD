@@ -66,29 +66,29 @@ class ConsumerController < ApplicationController
 #                      end
 #            end
             #only the consumer can edit their own information
-            get '/consumers/:id/edit' do
-#binding.pry
-                  if consumer_logged_in?
-                      @consumer = Consumer.find_by(id: params[:id])
-                      if session[:consumer_id] == @consumer.id
-                          @library = Library.find_by(id: @consumer.library_id)
-#binding.pry
-                          erb :'/consumers/edit'
-
-                      else
-                        #if the signed in user does not match the edit page they are trying to get to, they will be redirected to their own show page
-                          redirect "/consumers/#{session[:consumer_id]}"
-                      end
-                  elsif librarian_logged_in?
-                      @librarian = Librarian.find_by(id: session[:librarian_id])
-                      @consumer = Consumer.find_by(id: params[:id])
-                      @library = Library.find_by(id: @consumer.library_id)
-    #binding.pry
-                      erb :'/consumers/edit'
-                  else
-                      redirect "/consumers/#{params[:id]}"
-                  end
-            end
+#            get '/consumers/:id/edit' do
+##binding.pry
+#                  if consumer_logged_in?
+#                      @consumer = Consumer.find_by(id: params[:id])
+#                      if session[:consumer_id] == @consumer.id
+#                          @library = Library.find_by(id: @consumer.library_id)
+##binding.pry
+#                          erb :'/consumers/edit'
+#
+#                      else
+#                        #if the signed in user does not match the edit page they are trying to get to, they will be redirected to their own show page
+#                          redirect "/consumers/#{session[:consumer_id]}"
+#                      end
+#                  elsif librarian_logged_in?
+#                      @librarian = Librarian.find_by(id: session[:librarian_id])
+#                      @consumer = Consumer.find_by(id: params[:id])
+#                      @library = Library.find_by(id: @consumer.library_id)
+#    #binding.pry
+#                      erb :'/consumers/edit'
+#                  else
+#                      redirect "/consumers/#{params[:id]}"
+#                  end
+#            end
             patch '/consumers/:id' do
 
                   @consumer = Consumer.find_by(id: params[:id])

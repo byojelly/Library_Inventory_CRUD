@@ -32,7 +32,29 @@ class UserController < ApplicationController
                 end
         end
     end
+    get '/consumers/:id/edit' do
+binding.pry
+          if consumer_logged_in?
+              @consumer = User.find_by(id: params[:id])
+              if session[:user_id] == @consumer.id
+                  @library = Library.find_by(id: @consumer.library_id)
+#binding.pry
+                  erb :'/users/consumers/edit'
 
+              else
+                #consumers can only view their own edit page
+                  redirect "/consumers/#{session[:user_id]}"
+              end
+          elsif librarian_logged_in?
+              @librarian = User.find_by(id: session[:user_id])
+              @consumer = User.find_by(id: params[:id])
+              @library = Library.find_by(id: @consumer.library_id)
+#binding.pry
+              erb :'/users/consumers/edit'
+          else
+              redirect "/consumers/#{params[:id]}"
+          end
+    end
     post '/users/onboarding' do
           @user = User.find_by(id: session[:user_id])
 
@@ -66,7 +88,7 @@ class UserController < ApplicationController
                                           erb :'/users/librarians/onboarding'
                             end
             elsif consumer_logged_in?
-binding.pry
+#binding.pry
                               @user_consumer = @user
 ##binding.pry#
                               if params[:user].has_key?("library_id")
