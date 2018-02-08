@@ -20,7 +20,7 @@ class UserController < ApplicationController
     end
     post '/users/onboarding' do
           @user = User.find_by(id: session[:user_id])
-#binding.pry
+
     #in posts you should not render to a page but you should redirect
     #however i am making an exception to onboarding because i do not want there to be an onboarding route, if a user has an issue during the onboaridng process they still have the ability to log into their account and edit their profile with the proper information
             if librarian_logged_in?
@@ -52,6 +52,28 @@ class UserController < ApplicationController
                             end
             elsif consumer_logged_in?
 binding.pry
+                  #            @user_consumer = Consumer.find_by(id: session[:consumer_id])
+##binding.pry#
+                  #            if params[:consumer].has_key?("library_id")
+                  #                  if params[:consumer][:name]=="" || params[:age]=="" || params[:consumer][:address]==""
+                  #                          flash[:message] = "Please do not leave name/age/address empty during onboarding."
+                  #                          erb :'/consumers/onboarding'
+                  #                  elsif !is_number?(params[:consumer][:age])  #helper method
+                  #                          flash[:message] = "Please make sure that your age input is numerical."
+                  #                          erb :'/consumers/onboarding'
+                  #                  else
+                  #                    @consumer.update(params[:consumer])
+                  #                    @library = Library.find_by(id: @consumer.library_id)
+                  #                    @library.consumers << @consumer
+                  #                    @consumer.save
+                  #    #binding.pry
+                  #                    redirect "/consumers/#{@consumer.id}"
+                  #                  end
+                  #            else
+                  #            flash[:message] = "Please try again. You must select a local library during the onboarding."
+                  #              erb :'/consumers/onboarding'
+                  #            end
+
             end
     end
     get '/librarians/:id' do
