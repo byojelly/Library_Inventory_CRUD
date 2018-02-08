@@ -98,10 +98,10 @@ class ApplicationController < Sinatra::Base
      get '/login' do
         if logged_in?
               if consumer_logged_in?
-                redirect "/consumers/#{session[:consumer_id]}"
+                redirect "/consumers/#{session[:user_id]}"
               else
               #  binding.pry
-                  redirect "/librarians/#{session[:librarian_id]}"
+                  redirect "/librarians/#{session[:user_id]}"
               end
         else
               erb :login
