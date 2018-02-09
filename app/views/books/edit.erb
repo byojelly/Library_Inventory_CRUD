@@ -28,7 +28,8 @@
 
             <% end %>
             <p><b>What Section is the book in?</b></p>
-            <% Section.all.each do |sec| %>
+
+            <% @library.sections.each do |sec| %>
                   <label><%= sec.name %></label>
                       <input type="radio" name="book[section_id]" value="<%= sec.id %>" id="<%= sec.name %>" <%='checked' if @book.section_id == sec.id %>>
 

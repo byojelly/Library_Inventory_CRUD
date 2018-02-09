@@ -113,11 +113,12 @@ class LibraryController < ApplicationController
             erb :'/books/show_all'
     end
     get '/libraries/:id/books/new'  do
-#binding.pry
+binding.pry
 #posts request comes from book controller
           if  logged_in?
               if librarian_logged_in?
                     @library = Library.find_by(id: params[:id])
+
                     session[:library_id] = @library.id
                     erb :'/books/new'
               else
@@ -154,7 +155,6 @@ class LibraryController < ApplicationController
           @library = Library.find_by(id: params[:id])
           @section = Section.find_by(id: params[:section_id])
 
-#binding.pry
           erb :"/sections/show"
     end
     get '/libraries/:id/sections/:section_id/edit' do
