@@ -38,6 +38,8 @@ class BookController < ApplicationController
               elsif librarian_logged_in?
                   @librarian = User.find_by(id: session[:user_id])
                   @book = Book.find_by(id: params[:id])
+                  @library = Library.find_by(id: @book.library_id)
+
                   erb :'/books/edit'
               end
           else
