@@ -10,7 +10,7 @@ use SectionController
 use BookController
 use LibraryController
 #use LibrarianController
-use ConsumerController
+#use ConsumerController
 use UserController
 run ApplicationController
 #run HelperController

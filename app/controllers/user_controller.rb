@@ -33,7 +33,7 @@ class UserController < ApplicationController
         end
     end
     get '/consumers/:id/edit' do
-binding.pry
+#binding.pry
           if consumer_logged_in?
               @consumer = User.find_by(id: params[:id])
               if session[:user_id] == @consumer.id
@@ -225,9 +225,9 @@ binding.pry
                               if current_user.id == params[:id].to_i
                                   @user.update(params[:user])
                                   flash[:message] = "Successfully updated consumer profile."
-                                  redirect("/consumers/#{current_user.id}")
+                                  redirect "/consumers/#{current_user.id}"
                               else #editing someone elses consumer
-                                  redirect("/consumers/#{current_user.id}")
+                                  redirect "/consumers/#{current_user.id}"
                               end
 
                         end
@@ -235,17 +235,32 @@ binding.pry
     end
     get '/librarians/:id/delete' do
 #    binding.pry
-      if librarian_logged_in?
-              @librarian = User.find_by(id: params[:id])
-              erb :"/users/librarians/delete"
-      else
-          redirect "/librarians"
-      end
+            @librarian = User.find_by(id: params[:id])
+            if librarian_logged_in?
+
+                    erb :"/users/librarians/delete"
+            else
+                redirect "/librarians"
+            end
+
+    end
+    get '/consumers/:id/delete' do
+  #  binding.pry
+                @consumer = User.find_by(id: params[:id])
+                if librarian_logged_in?
+                        erb :"/users/consumers/delete"
+                elsif consumer_logged_in?
+                        if current_user.id == params[:id].to_i
+                              erb :"/users/consumers/delete"
+                        else
+                              redirect "/consumers/#{current_user.id}"
+                        end
+                end
 
     end
 #single delete action of all users
     delete '/users/:id' do
-binding.pry
+#binding.pry
 
           if librarian_logged_in?
                 if current_user == User.find(params[:id]) #if deleting logged in users own account
@@ -266,4 +281,5 @@ binding.pry
               end
           end
     end
+
 end
