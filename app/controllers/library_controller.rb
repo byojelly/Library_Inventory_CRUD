@@ -52,23 +52,27 @@ class LibraryController < ApplicationController
     end
     get '/libraries/:id/edit' do
 #binding.pry
-              if librarian_logged_in?
-                  @library = Library.find_by(id: params[:id])
-                  @librarian = User.find_by(id: session[:user_id])
-                  @books = Book.all
-                  @books_array =   @books.collect do |c|
-                                           c.library_id == params[:id].to_i
-                                        end
-                  @books_count = @books_array.count(true)
-#binding.pry
+          if logged_in?
+                    if librarian_logged_in?
+                        @library = Library.find_by(id: params[:id])
+                        @librarian = User.find_by(id: session[:user_id])
+                        @books = Book.all
+                        @books_array =   @books.collect do |c|
+                                                 c.library_id == params[:id].to_i
+                                              end
+                        @books_count = @books_array.count(true)
+      #binding.pry
 
-#binding.pry
-                  erb :'/libraries/edit'
-              elsif consumer_logged_in?
-                redirect "/consumers/#{params[:user_id]}"
-              else
+      #binding.pry
+                        erb :'/libraries/edit'
+                    elsif consumer_logged_in?
+                      redirect "/consumers/#{params[:user_id]}"
+                    else
+                      redirect '/login'
+                    end
+          else
                 redirect '/login'
-              end
+          end
     end
 
 
