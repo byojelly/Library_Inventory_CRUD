@@ -11,12 +11,12 @@ class BookController < ApplicationController
         if logged_in?
               if librarian_logged_in?
                 @book = Book.find_by(id: params[:id])
-                @librarian = Librarian.find_by(id: session[:librarian_id])
+                @librarian = User.find_by(id: session[:user_id])
                 @library = Library.find_by(id: @librarian.library_id)
                 @section = Section.find_by(id: @book.section_id)
-              else
+              elsif consumer_logged_in?
                 @book = Book.find_by(id: params[:id])
-                @consumer = Consumer.find_by(id: session[:consumer_id])
+                @consumer = User.find_by(id: session[:user_id])
                 @library = Library.find_by(id: @consumer.library_id)
                 @section = Section.find_by(id: @book.section_id)
               end
@@ -36,7 +36,7 @@ class BookController < ApplicationController
               if consumer_logged_in?
                   redirect "/books/#{params[:id]}"
               elsif librarian_logged_in?
-                  @librarian = User.find_by(id: session[:librarian_id])
+                  @librarian = User.find_by(id: session[:user_id])
                   @book = Book.find_by(id: params[:id])
                   erb :'/books/edit'
               end

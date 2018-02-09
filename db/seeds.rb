@@ -99,56 +99,56 @@ Book.create!([{
                 name: "Beware: House of Horrors Part 3", author: "Mr. Burns", pages: 300, available: "y", library_id: 1, section_id: 1
               },
               {
-              name: "Birth of a Town: Springfield Elementary School", author: "Principal Skinner", pages: 100, available: "y", library_id: 2, section_id: 3
+              name: "Birth of a Town: Springfield Elementary School", author: "Principal Skinner", pages: 100, available: "y", library_id: 2, section_id: 6
             },
             {
-            name: "Birth of a Town: Shelbyville", author: "Principal Skinner", pages: 200, available: "y", library_id: 2, section_id: 3
+            name: "Birth of a Town: Shelbyville", author: "Principal Skinner", pages: 200, available: "y", library_id: 2, section_id: 6
           },
             {
-            name: "Birth of a Town: Moe's Tavern", author: "Moe", pages: 300, available: "y", library_id: 2, section_id: 3
+            name: "Birth of a Town: Moe's Tavern", author: "Moe", pages: 300, available: "y", library_id: 2, section_id: 6
             },
             {
-            name: "How To: Krusty Burger Empire", author: "Krusty the Clown", pages: 100, available: "y", library_id: 2, section_id: 2
+            name: "How To: Krusty Burger Empire", author: "Krusty the Clown", pages: 100, available: "y", library_id: 2, section_id: 5
             },
             {
-            name: "How To: Kwik e Mart Setup", author: "Apu", pages: 200, available: "y", library_id: 2, section_id: 2
+            name: "How To: Kwik e Mart Setup", author: "Apu", pages: 200, available: "y", library_id: 2, section_id: 5
           },
             {
-            name: "How To: Begin Your Empire Today", author: "Mr. Burns", pages: 300, available: "y", library_id: 2, section_id: 2
+            name: "How To: Begin Your Empire Today", author: "Mr. Burns", pages: 300, available: "y", library_id: 2, section_id: 5
             },
             {
-            name: "Beware: House of Horrors Part 1", author: "Smithers", pages: 100, available: "y", library_id: 2, section_id: 1
+            name: "Beware: House of Horrors Part 1", author: "Smithers", pages: 100, available: "y", library_id: 2, section_id: 4
             },
             {
-            name: "Beware: House of Horrors Part 2", author: "Apu", pages: 200, available: "y", library_id: 2, section_id: 1
+            name: "Beware: House of Horrors Part 2", author: "Apu", pages: 200, available: "y", library_id: 2, section_id: 4
           },
             {
-            name: "Beware: House of Horrors Part 3", author: "Mr. Burns", pages: 300, available: "y", library_id: 2, section_id: 1
+            name: "Beware: House of Horrors Part 3", author: "Mr. Burns", pages: 300, available: "y", library_id: 2, section_id: 4
           },
           {
-          name: "Birth of a Town: Springfield Elementary School", author: "Principal Skinner", pages: 100, available: "y", library_id: 3, section_id: 3
+          name: "Birth of a Town: Springfield Elementary School", author: "Principal Skinner", pages: 100, available: "y", library_id: 3, section_id: 9
         },
         {
-        name: "Birth of a Town: Shelbyville", author: "Principal Skinner", pages: 200, available: "y", library_id: 3, section_id: 3
+        name: "Birth of a Town: Shelbyville", author: "Principal Skinner", pages: 200, available: "y", library_id: 3, section_id: 9
       },
         {
-        name: "Birth of a Town: Moe's Tavern", author: "Moe", pages: 300, available: "y", library_id: 3, section_id: 3
+        name: "Birth of a Town: Moe's Tavern", author: "Moe", pages: 300, available: "y", library_id: 3, section_id: 9
         },
         {
-        name: "How To: Krusty Burger Empire", author: "Krusty the Clown", pages: 100, available: "y", library_id: 3, section_id: 2
+        name: "How To: Krusty Burger Empire", author: "Krusty the Clown", pages: 100, available: "y", library_id: 3, section_id: 8
         },
         {
-        name: "How To: Kwik e Mart Setup", author: "Apu", pages: 200, available: "y", library_id: 3, section_id: 2
+        name: "How To: Kwik e Mart Setup", author: "Apu", pages: 200, available: "y", library_id: 3, section_id: 8
       },
         {
-        name: "How To: Begin Your Empire Today", author: "Mr. Burns", pages: 300, available: "y", library_id: 3, section_id: 2
+        name: "How To: Begin Your Empire Today", author: "Mr. Burns", pages: 300, available: "y", library_id: 3, section_id: 8
         },
         {
-        name: "Beware: House of Horrors Part 1", author: "Smithers", pages: 100, available: "y", library_id: 3, section_id: 1
+        name: "Beware: House of Horrors Part 1", author: "Smithers", pages: 100, available: "y", library_id: 3, section_id: 7
         },
         {
-        name: "Beware: House of Horrors Part 2", author: "Apu", pages: 200, available: "y", library_id: 3, section_id: 1
+        name: "Beware: House of Horrors Part 2", author: "Apu", pages: 200, available: "y", library_id: 3, section_id: 7
       },
         {
-        name: "Beware: House of Horrors Part 3", author: "Mr. Burns", pages: 300, available: "y", library_id: 3, section_id: 1
+        name: "Beware: House of Horrors Part 3", author: "Mr. Burns", pages: 300, available: "y", library_id: 3, section_id: 7
                 }])
