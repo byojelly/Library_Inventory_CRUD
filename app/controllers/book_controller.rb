@@ -35,8 +35,8 @@ class BookController < ApplicationController
           if logged_in?
               if consumer_logged_in?
                   redirect "/books/#{params[:id]}"
-              else
-                  @librarian = Librarian.find_by(id: session[:librarian_id])
+              elsif librarian_logged_in?
+                  @librarian = User.find_by(id: session[:librarian_id])
                   @book = Book.find_by(id: params[:id])
                   erb :'/books/edit'
               end

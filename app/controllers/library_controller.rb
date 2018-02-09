@@ -30,8 +30,8 @@ class LibraryController < ApplicationController
     get '/libraries/:id' do
         #  session.delete("library_id")  #used to close the section create loop for dynamic routes in post request for new and delete requests
           @library = Library.find_by(id: params[:id])
-          @librarians= Librarian.all
-          @consumers = Consumer.all
+          @librarians= librarians_array
+          @consumers = consumers_array
           @books = Book.all
 #binding.pry
           @librarian_array =   @librarians.collect do |l|
@@ -54,7 +54,7 @@ class LibraryController < ApplicationController
 #binding.pry
               if librarian_logged_in?
                   @library = Library.find_by(id: params[:id])
-                  @librarian = Librarian.find_by(id: session[:librarian_id])
+                  @librarian = User.find_by(id: session[:user_id])
                   @books = Book.all
                   @books_array =   @books.collect do |c|
                                            c.library_id == params[:id].to_i
@@ -64,6 +64,8 @@ class LibraryController < ApplicationController
 
 #binding.pry
                   erb :'/libraries/edit'
+              elsif consumer_logged_in?
+                redirect "/consumers/#{params[:user_id]}"
               else
                 redirect '/login'
               end
@@ -156,7 +158,7 @@ class LibraryController < ApplicationController
           erb :"/sections/show"
     end
     get '/libraries/:id/sections/:section_id/edit' do
-          @librarian = Librarian.find_by(id: session[:librarian_id])
+          @librarian = User.find_by(id: session[:user_id])
           @library = Library.find_by(id: params[:id])
           @section = Section.find_by(id: params[:section_id])
 
@@ -166,7 +168,7 @@ class LibraryController < ApplicationController
     get '/libraries/:id/sections/:section_id/delete' do
 #binding.pry
              #full loop with to allow dynamic redirecting routing in the delete request
-          @librarian = Librarian.find_by(id: session[:librarian_id])
+          @librarian = User.find_by(id: session[:user_id])
           @library = Library.find_by(id: params[:id])
           @section = Section.find_by(id: params[:section_id])
           session[:library_id] = @library.id
