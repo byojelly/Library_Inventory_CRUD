@@ -14,7 +14,7 @@ class ApplicationController < Sinatra::Base
                     !!session[:user_id]
                 end
                 def consumer_logged_in?
-    
+
                       User.find(session[:user_id]).librarian == false
 
                 end
