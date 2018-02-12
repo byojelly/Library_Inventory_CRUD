@@ -68,6 +68,9 @@ Notes w luisa
 OPtional: 12) Make Comsumers and Librarians utilize one User model
 
 OPtional: 13) Model Validations in sinatra (rails guide on model validations works as well)
+            - section model line 6 difficult applying message to validations
+            - added code to section new views and new model, and section controller, issue is that the new views page does not recognize @section
+
 
 14) Blog post on the topic of your choice related to the changes made
 15) Make another appointment

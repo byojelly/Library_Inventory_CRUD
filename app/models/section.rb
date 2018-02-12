@@ -2,9 +2,16 @@ class Section < ActiveRecord::Base
   belongs_to :library
   has_many :books
 
+
+    validates :name, :location, :library_id, presence: true # { message: 'Please do not leave the input sections empty when submiting an edit.' }
+    validates :name, length: { maximum: 30 }
+    validates :location, length: { maximum: 100 }
+    validates :name, uniqueness: { case_sensitive: false }
+
+
 #testing validations
 #make sure exists/filled in
-  validates :name, presence: true
+#  validates :name, presence: true
   #validates :location, presence: true
   #validates :library_id, presence: true
 
@@ -13,7 +20,7 @@ class Section < ActiveRecord::Base
   #validates_associated :books
 
 #uniqueness
-  validates :name, uniqueness: { case_sensitive: false }
+#  validates :name, uniqueness: { case_sensitive: false }
 
 #acceptance method for things like terms of service  you can define a message
 # =>   validates :terms_of_service, acceptance: { message: 'must be abided' }

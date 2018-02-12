@@ -10,20 +10,18 @@ class SectionController < ApplicationController
        return "code here later"
     end
     post '/sections/new' do
-#binding.pry
-          if   params[:section][:name]=="" || params[:section][:location]==""
-                                  flash[:message] = "Please do not leave the input sections empty when submiting an edit."
-                                  redirect "/libraries/#{session[:library_id]}/sections/new"
-          elsif  !!Section.find_by(name: params[:section][:name])
-
-                                flash[:message] = "This section name already exists."
-                                redirect "/libraries/#{session[:library_id]}/sections/new"
-          else
+binding.pry
 
                 @section = Section.create(params[:section])
                 @section.library_id = session[:library_id]
-                redirect "/libraries/#{session[:library_id]}/sections/#{@section.id}"
-          end
+
+                if @section.errors.any?
+                      redirect "/libraries/#{session[:library_id]}/sections/new"
+                else
+                      redirect "/libraries/#{session[:library_id]}/sections/#{@section.id}"
+                end
+
+
     end
     patch '/sections/:id' do
 #binding.pry
