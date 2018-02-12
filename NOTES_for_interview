@@ -66,6 +66,7 @@ Notes w luisa
             LibrarianController - line 26, 29, 33, 44
 
 OPtional: 12) Make Comsumers and Librarians utilize one User model
+
 OPtional: 13) Model Validations in sinatra (rails guide on model validations works as well)
 
 14) Blog post on the topic of your choice related to the changes made
