@@ -68,8 +68,9 @@ Notes w luisa
 OPtional: 12) Make Comsumers and Librarians utilize one User model
 
 OPtional: 13) Model Validations in sinatra (rails guide on model validations works as well)
-            - section model line 6 difficult applying message to validations
-            - added code to section new views and new model, and section controller, issue is that the new views page does not recognize @section
+
+            - added code to section new views (line 3) section controller (line 12 action) librarian_controller (line 135 handles get request for a libraries new section) section model (validations), aissue is that the new views page does not recognize @section
+            - @section is only rendered to the Library controller line 135 method that when section controller line 12 identifies that validation failed.  I am unable to create an instance of @section in view section new before the validation occurs
 
 
 14) Blog post on the topic of your choice related to the changes made

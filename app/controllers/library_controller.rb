@@ -134,10 +134,11 @@ binding.pry
     end
     get '/libraries/:id/sections/new' do
 #binding.pry
-            
+
             session.delete("library_id")    #a session param is added when creating a new section for dynamic routes in post request. The deletion allows the ability for the session added to not persist outside teh creation of the section
             if  logged_in?
                 if librarian_logged_in?
+                    #  @section = nil
                       @library = Library.find_by(id: params[:id])
           #below is work around to allow the post parameter to get additional information for creating a new sections
                       @next_section_id = Section.count + 1

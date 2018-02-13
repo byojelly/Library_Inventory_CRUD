@@ -14,9 +14,10 @@ binding.pry
 
                 @section = Section.create(params[:section])
                 @section.library_id = session[:library_id]
+                @library = Library.find_by(id: @section.library_id)
 
                 if @section.errors.any?
-                      redirect "/libraries/#{session[:library_id]}/sections/new"
+                      erb :"/sections/new" #erb = render
                 else
                       redirect "/libraries/#{session[:library_id]}/sections/#{@section.id}"
                 end

@@ -4,8 +4,8 @@ class Section < ActiveRecord::Base
 
 
     validates :name, :location, :library_id, presence: true # { message: 'Please do not leave the input sections empty when submiting an edit.' }
-    validates :name, length: { maximum: 30 }
-    validates :location, length: { maximum: 100 }
+    validates :name, length: { maximum: 50 }
+    validates :location, length: { maximum: 250 }
     validates :name, uniqueness: { case_sensitive: false }
 
 

@@ -1,18 +1,21 @@
 <center>
-
+<%binding.pry%>
+<% if !@section == nil %>
         <% if @section.errors.any? %>
                     <div id="error_explanation">
-                      <h2><%= pluralize(@section.errors.count, "error") %> prohibited this section from being saved:</h2>
-                  # =>
-
+                      <h2> Count: <%= @section.errors.count %> error(s), prohibit this section from being saved:</h2>
                       <ul>
-                      <% @section.errors.full_messages.each do |msg| %>
-                        <li><%= msg %></li>
-                      <% end %>
+                      <%if @section.errors.count == 1%>
+                            <li><%= @section.errors.full_messages %></li>
+                      <%else%>
+                            <% @section.errors.full_messages.each do |msg| %>
+                                  <li><%= msg %></li>
+                            <% end %>
+                      <%end%>
                       </ul>
                     </div>
         <% end %>
-
+<%end%>
 
       <h1>Create a new section at the <%=@library.name%> branch</h1>
       <form action="/sections/new" method="POST">
@@ -36,5 +39,7 @@
       <a href="/libraries/<%=@library.id%>">Cancel</a>
       <br></br>
       <a href="/logout">Logout</a>
+
+
 
 </center>
