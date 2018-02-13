@@ -17,6 +17,9 @@ binding.pry
                 @library = Library.find_by(id: @section.library_id)
 
                 if @section.errors.any?
+                      #redirect "/libraries/#{session[:library_id]}/sections/new"
+                      #rails validation guidelines say to render, but the url gets messed up
+                      #cannot use redirect because the @section.errors gets deleted when redirecting. Only rendering keeps the variable intact
                       erb :"/sections/new" #erb = render
                 else
                       redirect "/libraries/#{session[:library_id]}/sections/#{@section.id}"
