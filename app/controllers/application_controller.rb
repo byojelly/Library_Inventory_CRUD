@@ -89,8 +89,10 @@ class ApplicationController < Sinatra::Base
                             else
                                 @user_consumer = User.create(params[:user])
                                 session[:user_id] = @user_consumer.id
-    #binding.pry
-                                erb :'/users/consumers/onboarding'
+                                session[:consumer_onboarding_incomplete] = true
+    binding.pry
+    #redirect to consumers onboarding
+                                redirect to :'/users/onboarding'
                             end
                         #if librarian was checked
                   elsif params[:user][:librarian] == "true"
@@ -103,11 +105,36 @@ class ApplicationController < Sinatra::Base
                                   #if username doesnt exist create Librarian
                                     @user_librarian = User.create(params[:user])
                                     session[:user_id] = @user_librarian.id
+                                    session[:librarian_onboarding_incomplete] = true
         #binding.pry
-                                    erb :'/users/librarians/onboarding'
+        #redirect to librarians onboarding
+                                    redirect to :'/users/onboarding'
                                 end
                   end
      end
+
+     get '/users/onboarding' do
+binding.pry
+             if logged_in?
+                   if consumer_logged_in?
+                         if session.key?("consumer_onboarding_incomplete") || current_user.address == nil
+                            erb :'consumers/onboarding'
+#                         else
+#                            redirect "/consumers/#{session[:user_id]}"
+                         end
+                   else
+                   #  binding.pry
+                         if session.key?("librarian_onboarding_incomplete")
+                            erb :'librarian/onboarding'
+#                         else
+#                            redirect "/librarian/#{session[:user_id]}"
+                         end
+                   end
+             else
+                   erb :login
+             end
+     end
+
      get '/login' do
         if logged_in?
               if consumer_logged_in?
