@@ -37,6 +37,7 @@ Notes w luisa
 
 9) XXXX nest parameter for all resources to enable maaaaass assignment
         updated controllers and views for
+
             consumers
             	     onboarding
                   	edit
@@ -59,6 +60,9 @@ Notes w luisa
 11) GET requests should only get. POST requests should only post.
       rendering (ie erb: blah blah ) should not be used in post requests, only redirects should be used
 
+##      A get request should not be making changes to the server
+##      Post request should not be diretly rending information
+
       onboarding should not have a route-
             ApplicationController
                   - not changing 67 / 80 for onboarding librarians and consumers. I do not want my users to be able to navigate to the route /consumers/:id/onboarding.  I want this to be a temporary flow page after creating a new account.  If the user makes a mistake during the signup process, they can add the necesssary values at the edit page.
@@ -77,3 +81,17 @@ OPtional: 13) Model Validations in sinatra (rails guide on model validations wor
 15) Make another appointment
 
 when done setup an appointment with @luisa
+
+
+
+--------------------------------------------------------
+
+FINAL NOTES
+
+work on get and posts - This methodology is important for coders to review code - and for your work being reviewed for a job
+
+work on validations - It can be implemented - do a .valid? before persisting and implement  - in the view file use if .errors.messages? exist
+
+methods that should be allocated to model / vs heper methods
+          helper methods are more presentation (example ) - format timestamp into desired format
+          module methods are more business logic - librarians favorite colors

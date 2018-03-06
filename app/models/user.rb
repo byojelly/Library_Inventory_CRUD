@@ -7,5 +7,7 @@ class User < ActiveRecord::Base
   has_many :booksharemembers
   has_many :libraries, through: :booksharemembers
 
-
+  def self.librarians
+    where(librarian: true)
+  end
 end

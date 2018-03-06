@@ -117,7 +117,7 @@ class LibraryController < ApplicationController
             erb :'/books/show_all'
     end
     get '/libraries/:id/books/new'  do
-binding.pry
+#binding.pry
 #posts request comes from book controller
           if  logged_in?
               if librarian_logged_in?

@@ -10,7 +10,7 @@ class SectionController < ApplicationController
        return "code here later"
     end
     post '/sections/new' do
-binding.pry
+#binding.pry
 
                 @section = Section.create(params[:section])
                 @section.library_id = session[:library_id]
