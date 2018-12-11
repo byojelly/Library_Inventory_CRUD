@@ -45,7 +45,7 @@ GEM
 <<<<<<< HEAD
     rack (2.0.6)
 =======
-    rack (2.0.5)
+    rack (2.0.6)
 >>>>>>> ffc8c370756ff24987adb771594e0466b3a3aa87
     rack-flash3 (1.0.5)
       rack
