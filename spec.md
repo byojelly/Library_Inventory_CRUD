@@ -4,7 +4,7 @@ Specs:
 - [x] Use Sinatra to build the app
 - [x] Use ActiveRecord for storing information in a database
 - [x] Include more than one model class (list of model class names e.g. User, Post,
-         - boos / consumers / sections / librarians / libraries/
+         - books / consumers / sections / librarians / libraries/
    Category)
 - [x] Include at least one has_many relationship (x has_many y e.g. User has_many Posts)
 - [x] Include user accounts (librarian / consumers)

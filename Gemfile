@@ -8,7 +8,7 @@ gem 'require_all'
 gem 'sqlite3'  #sets up our database
 gem 'thin'
 gem 'shotgun'  #real time viewing of our code in a browser
-gem 'pry'
+gem 'pry' #binding.pry
 gem 'bcrypt'  #allows us to secure passwords in our database safely
 gem "tux"       #another way of viewing our code (databses specifically) in terminal similar to a binding.pry or irb
 gem 'rack-flash3'
