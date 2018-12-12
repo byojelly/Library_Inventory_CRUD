@@ -2,6 +2,7 @@ require './config/environment'
 require 'rack-flash'
 class ApplicationController < Sinatra::Base
 
+#set up sessions via bcrypt
     use Rack::Flash
     configure do
       set :public_folder, 'public'
@@ -14,9 +15,7 @@ class ApplicationController < Sinatra::Base
                     !!session[:user_id]
                 end
                 def consumer_logged_in?
-
                       User.find(session[:user_id]).librarian == false
-
                 end
                 def librarian_logged_in?
                     User.find(session[:user_id]).librarian == true
@@ -47,11 +46,11 @@ class ApplicationController < Sinatra::Base
                 end
       end
     get '/' do
-#binding.pry
+#get homepage
           #session.delete("librarian_id")
           session.delete("library_id")  #used to close the section create loop for dynamic routes in post request
           @libraries = Library.all
-           erb :homepage
+           erb :homepage  #render this ruby code to the html homepage page
     end
     get '/signup' do
 #binding.pry
@@ -61,7 +60,7 @@ class ApplicationController < Sinatra::Base
                 redirect "/consumers/#{session[:user_id]}"
               else
               #  binding.pry
-                  redirect "/librarians/#{session[:user_id]}"
+                redirect "/librarians/#{session[:user_id]}"
               end
         else
               erb :signup
